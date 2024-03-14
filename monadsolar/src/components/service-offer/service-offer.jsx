@@ -4,12 +4,9 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-import utility from "../../assets/utility.png"
-import commercial from "../../assets/Home-page-commercial.png";
-import residential from "../../assets/home-page-residential.png";
-// import CompanyOverView from "../CompanyOverview/CompanyOverview";
-import recurrentenergy from "../../assets/recurrent.png";
-import csi from "../../assets/Products-and-Solutions-600-x-331.jpg";
+
+import CompanyOverView from "../CompanyOverview/CompanyOverview";
+
 
 const ServiceOffer = () => {
   const CardWrapper = ({ title, image }) => {
@@ -44,15 +41,15 @@ const ServiceOffer = () => {
       <section id="sec1">
         <div className={styles.wrap}>
           <div className={styles.uslugeMain}>
-            <CardWrapper title="Utility" image={utility} />
-            <CardWrapper title="Commercial" image={commercial} />
-            <CardWrapper title="Residential" image={residential} />
+            <CardWrapper title="Utility" image="/utility.png" />
+            <CardWrapper title="Commercial" image="./commercial.png" />
+            <CardWrapper title="Residential" image="./residential.png" />
           </div>
-          {/* <CompanyOverView /> */}
+          <CompanyOverView /> 
 
           <div className={styles.uslugeMain}>
-            <CardWrapper title="CSI Solar" image={csi} />
-            <CardWrapper title="Recurrent Energy" image={recurrentenergy} />
+            <CardWrapper title="CSI Solar"  image="/Products-and-Solutions-600-x-331.jpg" />
+            <CardWrapper title="Recurrent Energy"   image="/recurrent.png" />
           </div>
         </div>
       </section>
