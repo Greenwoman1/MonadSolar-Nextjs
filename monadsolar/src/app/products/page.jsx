@@ -2,15 +2,16 @@
 import React from "react";
 import styles from "./Products.module.css";
 import Link from "next/link";
+import Header from "@/components/header/page";
 
 const Products = () => {
 
 
   return (
     <>
-      {/* <div className={styles.container}>
-        <Header src={"./src/assets/products.jpg"} title={"Products"} />
-      </div> */}
+      <div className={styles.container}>
+        <Header src="./products.jpg" title={"Products"} />
+      </div>
       <div className="layout">
         <div className="middle">
           <section id="products_sec">

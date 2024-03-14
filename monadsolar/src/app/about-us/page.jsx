@@ -4,16 +4,17 @@ import styles from "./AboutUs.module.css";
 // import enviroment from "../assets/enviroment.jpg";
 import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 import { useMediaQuery } from "@react-hook/media-query";
-// import Header from "../Header/Header";
+import Header from "@/components/header/page";
+
 
 const AboutUs = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   return (
     <>
-      {/* <div className={styles.container}>
-        <Header src={"./src/assets/about-us-cover.jpg"} title={"About us"} />
-      </div> */}
+      <div className={styles.container}>
+        <Header src={"./about-us-cover.jpg"} title={"About us"} />
+      </div> 
       <div className="layout">
         <ParallaxProvider>
           <div className="middle">
