@@ -1,13 +1,23 @@
-
-import ServiceOffer from "../components/service-offer/service-offer";
-import styles from "./home.module.css"
+import Header from "@/components/header/page";
+import styles from "./home.module.css";
+import SwiperComponent from "@/components/SwiperComponent/page";
+import "./globals.css"
+import ServiceOffer from "@/components/service-offer/service-offer";
 const Home = () => {
   return (
     <div className="layout">
+      <div className="firstRow-all-columns">
+        <div className={styles.container}>
+          <Header src={"./header-cover.jpg"} title={""} />
+        </div>
+      </div>
       <div className="middle">
         <div className={styles.home}>
+         
           
         <ServiceOffer/> 
+
+        <SwiperComponent />
         </div>
       </div>
     </div>
