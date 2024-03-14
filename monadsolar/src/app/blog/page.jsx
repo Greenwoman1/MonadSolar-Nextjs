@@ -4,6 +4,7 @@ import React from 'react'
 import { useState } from 'react'
 import styles from './Blog.module.css'
 import BlogCard from '@/components/BlogCard/BlogCard';
+import Pagination from '@/components/pagination/Pagination';
 import { blogData } from '@/data/BlogData';
 
 const Blog = () => {
@@ -43,6 +44,11 @@ const Blog = () => {
               ))}
             </div>
           </div>
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
         </div>
       </div>
     </>

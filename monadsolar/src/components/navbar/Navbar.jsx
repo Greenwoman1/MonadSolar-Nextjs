@@ -114,7 +114,7 @@ const Navbar = () => {
                   ABOUT US
                 </Link>
                 <Link className={styles.nav_link} href="/products">
-                    PRODUCTS
+                  PRODUCTS
                 </Link> 
                 <Link className={styles.nav_link} href="/blog">
                   BLOG
