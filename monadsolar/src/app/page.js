@@ -6,8 +6,8 @@ const Home = () => {
     <div className="layout">
       <div className="middle">
         <div className={styles.home}>
-          <ServiceOffer />
-         
+          
+        <ServiceOffer/> 
         </div>
       </div>
     </div>
