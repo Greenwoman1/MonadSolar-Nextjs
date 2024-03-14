@@ -1,0 +1,25 @@
+.blog_cards_wrapper {
+  display: flex;
+  justify-content: center;
+ 
+  padding: 10px 10px;
+}
+
+.blog_cards_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: 40px;
+}
+
+@media screen and (max-width: 1250px) {
+  .blog_cards_grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .blog_cards_grid {
+    grid-template-columns: 1fr;
+  }
+}
