@@ -5,12 +5,13 @@ import styles from "./SingleBlog.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { blogData } from '@/data/BlogData';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
-const SingleBlog = () => {
+
+const SingleBlog = ({params}) => {
   const router = useRouter()
-  const { id: idParams } = router.query
-
+  const idParams = parseInt( params.blogId)
+  console.log(idParams)
   const blog = blogData.find((blog) => blog.id === idParams)
 
   if (!blog) {
@@ -25,7 +26,7 @@ const SingleBlog = () => {
     .join(".");
 
   const handleEdit = () => {
-    router.push("/acc", { state: { data: blog } });
+    router.push("/account", { state: { data: blog } });
   };
 
   const handleDelete = () => {
