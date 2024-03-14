@@ -2,12 +2,16 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
-
+import { Metadata } from "next";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "MonadSolar",
-  description: "POWERING THE FUTURE WITH SOLAR ENERGY",
+  title: {
+    absolute: "",
+    default: "MonadSolar",
+    template: ""
+ },
+ description: "POWERING THE FUTURE WITH SOLAR ENERGY",
 };
 
 export default function RootLayout({ children }) {
