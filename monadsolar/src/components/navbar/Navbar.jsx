@@ -123,7 +123,7 @@ const Navbar = () => {
                   CONTACT
                 </Link>
                 {isLoggedIn && (
-                  <Link className={styles.nav_link} href="/acc">
+                  <Link className={styles.nav_link} href="/account">
                     ACCOUNT
                   </Link>
                 )}
