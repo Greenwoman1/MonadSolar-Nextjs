@@ -1,0 +1,46 @@
+/* Pagination styles */
+.pagination {
+  display: flex;
+  justify-content: center;
+  
+  padding: 5px;
+}
+
+.pagination button {
+  margin: 0 2px;
+  padding: 8px 12px;
+  border: 2px solid #6db494;
+  background-color: #6db494;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+  background-color: transparent;
+  color: #6db494;
+}
+
+.pagination button.active {
+  background-color: transparent;
+  color: #6db494;
+  font-weight: bold;
+}
+
+.dropdown_container {
+  display: flex;
+  justify-content: center;
+  
+  padding: 5px 0;
+}
+
+.pageSelect {
+  padding: 5px 0;
+  border: 2px solid #6db494;
+  color: #6db494;
+  font-weight: bold;
+}
+
+.pageSelect option {
+  font-weight: bold;
+}
