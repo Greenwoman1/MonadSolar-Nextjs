@@ -1,0 +1,36 @@
+* {
+    margin: unset;
+  
+    font-family: "Montserrat", sans-serif;
+  }
+  
+  body {
+    background-color: #fbfafb;;
+  }
+  
+  .layout {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: auto minmax(400px, 1320px) auto;
+    height: auto;
+   
+  }
+  
+  .firstRow-all-columns {
+    grid-row: 1; /* prvi red */
+    grid-column: 1 / span 3; /* preko 3 kolone */
+  }
+  
+  
+  
+  .middle {
+    grid-row: 2; /* Display routes in the second row */
+    grid-column: 2; /* Display in the middle column */
+  
+  }
+  
+  .thirdRow-all-columns {
+    grid-row: 3; /* Display footer in the third row */
+    grid-column: 1 / span 3; /* Span across all columns */
+  }
+  

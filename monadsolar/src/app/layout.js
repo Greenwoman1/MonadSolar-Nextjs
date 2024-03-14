@@ -14,11 +14,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+<<<<<<< HEAD:moneshop/src/app/layout.js
         <Navbar />
+=======
+        <div className="layout">
+          <NavBar />
+>>>>>>> 146d7bbead85aa0a7fc7418bfe08acdc3273595a:monadsolar/src/app/layout.js
 
-        {children}
+          {children}
 
-        <Footer />
+          <Footer />
+        </div>
       </body>
     </html>
   );
