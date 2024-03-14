@@ -1,6 +1,6 @@
 * {
     margin: unset;
-  
+    height: 100vh;
     font-family: "Montserrat", sans-serif;
   }
   
@@ -13,7 +13,7 @@
     grid-template-rows: auto 1fr auto;
     grid-template-columns: auto minmax(400px, 1320px) auto;
     height: auto;
-   
+    
   }
   
   .firstRow-all-columns {
