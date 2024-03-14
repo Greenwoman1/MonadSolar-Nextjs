@@ -1,11 +1,9 @@
-
-"use client"
+"use client";
 import styles from "./header.module.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 const Header = ({ src, title }) => {
-
-
-
   const bannerImageStyle = () => {
     if (title === "Products") {
       return {
@@ -62,10 +60,20 @@ const Header = ({ src, title }) => {
           )}
         </div>
         <a
-          href={`#${title === "Contact Us" ? "contact_sec" : title === "Products" ? "products_sec" : title === "About us" ? "about_sec" : title === "" ? "sec1" : ""}`}
+          href={`#${
+            title === "Contact Us"
+              ? "contact_sec"
+              : title === "Products"
+              ? "products_sec"
+              : title === "About us"
+              ? "about_sec"
+              : title === ""
+              ? "sec1"
+              : ""
+          }`}
           className={styles.banner_button}
         >
-          <i className="fa-solid fa-chevron-down"></i>
+          <FontAwesomeIcon icon={faChevronDown} />{" "}
         </a>
       </div>
     </div>
