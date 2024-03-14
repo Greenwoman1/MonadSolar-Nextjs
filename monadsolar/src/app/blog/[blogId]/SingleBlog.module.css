@@ -1,0 +1,58 @@
+.single_blog_wrapper {
+  display: flex;
+  justify-content: center;
+
+}
+
+.single_blog_container {
+
+  padding: 10px 50px;
+  max-width: 1366px;
+}
+
+.title_container {
+  padding: 5px 0;
+}
+
+.title {
+  color: #439e77;
+}
+
+.date_container {
+  padding: 10px 0;
+}
+
+.edit_icon {
+  color: #439e77;
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+.delete_icon {
+  color: black;
+}
+
+.image_container {
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+}
+
+.img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.description_container {
+  padding: 10px 0;
+}
+
+.text_container {
+  padding: 15px 0;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 20px; 
+  }
+}
