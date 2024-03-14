@@ -4,7 +4,7 @@ import styles from "./Products.module.css";
 import Link from "next/link";
 
 const Products = () => {
-  const buttonProduct = () => {};
+
 
   return (
     <>
@@ -34,10 +34,9 @@ const Products = () => {
                     Wafer size 210mm Module efficiency up to 23 % Up to 85%
                     Power Bifaciality Lower LCOE & system cost
                   </p>
-
-                  <Link href="/single-product" className={styles.button}>
+                  <div style={{marginTop: "30px"}}><Link href="/single-product" className={styles.button}>
                     Learn more
-                  </Link>
+                  </Link></div>
                 </div>
               </div>
             </div>
@@ -57,9 +56,9 @@ const Products = () => {
                     Wafer size 210mm Module efficiency up to 23 % Up to 85%
                     Power Bifaciality Lower LCOE & system cost
                   </p>
-                  <Link href="/single-product" className={styles.button}>
+                  <div style={{marginTop: "30px"}}><Link href="/single-product" className={styles.button}>
                     Learn more
-                  </Link>
+                  </Link></div>
                 </div>
               </div>
               <div className={styles.column}>
@@ -85,9 +84,9 @@ const Products = () => {
                     Wafer size 210mm Module efficiency up to 23 % Up to 85%
                     Power Bifaciality Lower LCOE & system cost
                   </p>
-                  <Link href="/single-product" className={styles.button}>
+                  <div style={{marginTop: "30px"}}><Link href="/single-product" className={styles.button}>
                     Learn more
-                  </Link>
+                  </Link></div>
                 </div>
               </div>
             </div>
@@ -107,9 +106,10 @@ const Products = () => {
                     Wafer size 210mm Module efficiency up to 23 % Up to 85%
                     Power Bifaciality Lower LCOE & system cost
                   </p>
-                  <Link href="/single-product" className={styles.button}>
+                  <div style={{marginTop: "30px"}}><Link href="/single-product" className={styles.button}>
                     Learn more
-                  </Link>
+                  </Link></div>
+                  
                 </div>
               </div>
               <div className={styles.column}>
