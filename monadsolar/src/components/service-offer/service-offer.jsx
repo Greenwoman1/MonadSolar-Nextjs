@@ -7,7 +7,6 @@ import { CardActionArea } from "@mui/material";
 
 import CompanyOverView from "../CompanyOverview/CompanyOverview";
 
-
 const ServiceOffer = () => {
   const CardWrapper = ({ title, image }) => {
     return (
@@ -19,7 +18,6 @@ const ServiceOffer = () => {
               height="300"
               image={image}
               alt="green iguana"
-             
             />
             <div className={styles.overlay}></div>
             <Typography
@@ -45,11 +43,14 @@ const ServiceOffer = () => {
             <CardWrapper title="Commercial" image="./commercial.png" />
             <CardWrapper title="Residential" image="./residential.png" />
           </div>
-          <CompanyOverView /> 
+          <CompanyOverView />
 
           <div className={styles.uslugeMain}>
-            <CardWrapper title="CSI Solar"  image="/Products-and-Solutions-600-x-331.jpg" />
-            <CardWrapper title="Recurrent Energy"   image="/recurrent.png" />
+            <CardWrapper
+              title="CSI Solar"
+              image="/Products-and-Solutions-600-x-331.jpg"
+            />
+            <CardWrapper title="Recurrent Energy" image="/recurrent.png" />
           </div>
         </div>
       </section>

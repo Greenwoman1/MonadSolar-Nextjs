@@ -1,11 +1,6 @@
 
 import styles from "./Overview.module.css";
-// import ship from "../assets/shipment.png";
-// import modulecapa from "../assets/modulcapa.png";
-// import pipeline from "../assets/pipeline.png";
-// import customers from "../assets/customers.png";
-// import countries from "../assets/countries.png";
-// import faci from "../assets/facilities.png";
+
 
 const CompanyOverview = () => {
   return (
