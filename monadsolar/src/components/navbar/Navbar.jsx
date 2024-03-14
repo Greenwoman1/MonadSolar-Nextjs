@@ -111,8 +111,11 @@ const Navbar = () => {
                   HOME
                 </Link>
                 <Link className={styles.nav_link} href="/about-us">
-                  ABOUT
+                  ABOUT US
                 </Link>
+                <Link className={styles.nav_link} href="/products">
+                    PRODUCTS
+                </Link> 
                 <Link className={styles.nav_link} href="/blog">
                   BLOG
                 </Link>
@@ -195,8 +198,11 @@ const Navbar = () => {
                 HOME
               </Link>
               <Link className={styles.nav_link} href="/about-us">
-                ABOUT
+                ABOUT US
               </Link>
+              <Link className={styles.nav_link} href="/products">
+                PRODUCTS
+              </Link> 
               <Link className={styles.nav_link} href="/blog">
                 BLOG
               </Link>
