@@ -6,7 +6,7 @@
   padding: 5px;
 }
 
-.pagination button {
+.pagination a {
   margin: 0 2px;
   padding: 8px 12px;
   border: 2px solid #6db494;
@@ -14,14 +14,15 @@
   color: white;
   cursor: pointer;
   transition: background-color 0.3s;
+  text-decoration: none;
 }
 
-.pagination button:hover {
+.pagination a:hover {
   background-color: transparent;
   color: #6db494;
 }
 
-.pagination button.active {
+.pagination .active {
   background-color: transparent;
   color: #6db494;
   font-weight: bold;

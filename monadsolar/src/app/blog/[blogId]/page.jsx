@@ -6,7 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { blogData } from '@/data/BlogData';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import Link from 'next/link';import NotFoundBlog from "./not-found"
+
 
 
 const SingleBlog = ({params}) => {
@@ -15,7 +16,7 @@ const SingleBlog = ({params}) => {
   const blog = blogData.find((blog) => blog.id === idParams)
 
   if (!blog) {
-    return <div>Blog not found!</div>;
+    return <NotFoundBlog/>
   }
 
   const { title, description, date, image, id } = blog;

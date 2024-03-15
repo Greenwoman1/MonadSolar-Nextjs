@@ -5,6 +5,7 @@ import styles from "./BlogCard.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAnglesRight } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import Image from "next/image";
 
 
 
@@ -29,6 +30,16 @@ const BlogCard = (props) => {
         <div className={styles.blog_card_img_overlay}>
           <p> {props.title} </p>
         </div>
+        {/*<Image
+          className={styles.blog_card_img}
+          src={props.image} 
+          alt=""
+          width={100}
+          height={50}
+          layout="responsive" // Adjust image size responsively
+          objectFit="cover"   // Adjust how the image fits its container
+          objectPosition="center"
+        />*/}
         <img className={styles.blog_card_img} src={props.image} alt="" />
       </div>
 
