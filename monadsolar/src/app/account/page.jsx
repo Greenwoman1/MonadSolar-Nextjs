@@ -1,8 +1,7 @@
-
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { useRouter } from "next/navigation"; // Import useRouter from next/router
+import { useRouter, useSearchParams } from "next/navigation"; // Import useRouter from next/router
 import Editor from "@/components/Editor/Editor";
 import styles from "./account.module.css";
 import EditorPreview from "@/components/EditorPreview/page";
@@ -10,18 +9,28 @@ import { blogData } from "../BlogData/BlogData";
 
 const Account = () => {
   const router = useRouter();
+  const searchParams = useSearchParams()
 
-  const [editData, setEditData] = useState(null);
-
+  console.log({searchParams}, searchParams.get('id'))
+  const [editData, setEditData] = useState('');
+  console.log(localStorage.getItem("blogData"))
+ 
   useEffect(() => {
+    const storedData = localStorage.getItem("blogData");
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      setEditData(parsedData);
+      setDescriptionValue(parsedData.description);
+      setBlogData((prevData) => ({
+        ...prevData,
+        title: parsedData.title,
+        image: parsedData.image,
+      }));
 
-    if (router.query){
-    const { state } = router.query;
+      console.log()
+    }
+  }, []);
 
-    if (state && state.data) {
-      setEditData(state.data);
-    }}
-  }, [router.query]);
 
   const [data, setBlogData] = useState({
     image: "",
@@ -96,11 +105,7 @@ const Account = () => {
               />
 
               <label>Import Cover Image:</label>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleFileChange}
-              />
+              <input type="file" accept="image/*" onChange={handleFileChange} />
             </div>
             {data.image && <div>Cover image already selected</div>}
             <Editor

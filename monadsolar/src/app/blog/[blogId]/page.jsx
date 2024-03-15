@@ -12,8 +12,9 @@ import { useRouter } from 'next/navigation';
 const SingleBlog = ({params}) => {
   const router = useRouter()
   const idParams = parseInt( params.blogId)
-  console.log(idParams)
+  console.log({idParams})
   const blog = blogData.find((blog) => blog.id === idParams)
+
 
   if (!blog) {
     return <div>Blog not found!</div>;
@@ -27,7 +28,8 @@ const SingleBlog = ({params}) => {
     .join(".");
 
   const handleEdit = () => {
-    router.push("/account", { state: { data: blog } });
+
+    router.push(`/account?id=${idParams}`, {});
   };
 
   const handleDelete = () => {
