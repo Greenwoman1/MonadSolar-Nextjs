@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { blogData } from '@/data/BlogData';
 import { useRouter } from 'next/navigation';
+import NotFoundBlog from "./not-found"
 
 
 
@@ -17,7 +18,7 @@ const SingleBlog = ({params}) => {
 
 
   if (!blog) {
-    return <div>Blog not found!</div>;
+    return <NotFoundBlog/>
   }
 
   const { title, description, date, image, id } = blog;
