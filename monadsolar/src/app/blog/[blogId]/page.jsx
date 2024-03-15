@@ -1,20 +1,18 @@
 "use client"
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from "./SingleBlog.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { blogData } from '@/data/BlogData';
 import { useRouter } from 'next/navigation';
-
+import Link from 'next/link';
 
 
 const SingleBlog = ({params}) => {
   const router = useRouter()
   const idParams = parseInt( params.blogId)
-  console.log({idParams})
   const blog = blogData.find((blog) => blog.id === idParams)
-
 
   if (!blog) {
     return <div>Blog not found!</div>;
@@ -27,10 +25,6 @@ const SingleBlog = ({params}) => {
     .split("/")
     .join(".");
 
-  const handleEdit = () => {
-
-    router.push(`/account?id=${idParams}`, {});
-  };
 
   const handleDelete = () => {
     const existingBlogIndex = blogData.findIndex(
@@ -59,9 +53,12 @@ const SingleBlog = ({params}) => {
               <div className={styles.date_container}>{formattedDate}</div>
 
               <div className={styles.edit_container}>
-                <i onClick={handleEdit} className={styles.edit_icon}>
+                <Link href={`/blog/${idParams}/edit`}
+>
+                <i  className={styles.edit_icon}>
                   <FontAwesomeIcon icon={faPenToSquare} />
                 </i>
+                </Link>
                 <i
                   onClick={handleDelete}
                   className={styles.edit_icon + " " + styles.delete_icon}
