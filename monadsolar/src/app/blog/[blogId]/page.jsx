@@ -1,18 +1,17 @@
-"use client"
+"use client";
 
-import React, { useEffect } from 'react'
-import styles from "./SingleBlog.module.css"
+import React, { useEffect } from "react";
+import styles from "./SingleBlog.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { blogData } from '@/data/BlogData';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import { blogData } from "@/data/BlogData";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-
-const SingleBlog = ({params}) => {
-  const router = useRouter()
-  const idParams = parseInt( params.blogId)
-  const blog = blogData.find((blog) => blog.id === idParams)
+const SingleBlog = ({ params }) => {
+  const router = useRouter();
+  const idParams = parseInt(params.blogId);
+  const blog = blogData.find((blog) => blog.id === idParams);
 
   if (!blog) {
     return <div>Blog not found!</div>;
@@ -25,7 +24,6 @@ const SingleBlog = ({params}) => {
     .split("/")
     .join(".");
 
-
   const handleDelete = () => {
     const existingBlogIndex = blogData.findIndex(
       (blog) => blog.id === idParams
@@ -36,9 +34,6 @@ const SingleBlog = ({params}) => {
 
     router.push("/blog");
   };
-
-
- 
 
   return (
     <>
@@ -53,18 +48,17 @@ const SingleBlog = ({params}) => {
               <div className={styles.date_container}>{formattedDate}</div>
 
               <div className={styles.edit_container}>
-                <Link href={`/blog/${idParams}/edit`}
->
-                <i  className={styles.edit_icon}>
-                  <FontAwesomeIcon icon={faPenToSquare} />
-                </i>
+                <Link href={`/blog/${idParams}/edit`}>
+                  <i className={styles.edit_icon}>
+                    <FontAwesomeIcon icon={faPenToSquare} />
+                  </i>
                 </Link>
-                <i
-                  onClick={handleDelete}
-                  className={styles.edit_icon + " " + styles.delete_icon}
-                >
-                  <FontAwesomeIcon icon={faTrash} />
-                </i>
+
+                <Link  href={`/blog/${idParams}/delete`}>
+                  <i className={styles.edit_icon + " " + styles.delete_icon}>
+                    <FontAwesomeIcon icon={faTrash} />
+                  </i>
+                </Link>
               </div>
 
               <div className={styles.image_container}>
@@ -80,7 +74,7 @@ const SingleBlog = ({params}) => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default SingleBlog
+export default SingleBlog;
