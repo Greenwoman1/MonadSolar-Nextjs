@@ -26,6 +26,7 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "20.11.27",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",

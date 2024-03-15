@@ -36,7 +36,6 @@
   color: #439e77;
   position: absolute;
   bottom: 0;
-  width: 100%;
   display: flex;
   justify-content: center;
   cursor: pointer;
@@ -47,6 +46,7 @@
 
 .banner_button svg {
   font-size: 30px;
+  height: 30px;
 }
 
 .banner_button:hover {
