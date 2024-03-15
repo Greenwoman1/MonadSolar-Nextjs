@@ -1,6 +1,4 @@
-import image1 from "../../../public/blog1.jpg";
-import image2 from "../../../public/blog2.jpg";
-import image3 from "../../../public/blog3.png";
+
 
 const delay = (ms: number) =>
     new Promise((resolve) => {
@@ -12,7 +10,7 @@ const delay = (ms: number) =>
 const blogData = [
     {
         id: 1,
-        image: image2,
+        image: "../../../public/blog1.jpg",
         title:
             "2 Canadian Solar Partners with Sol Systems to Ramp Up U.S. Module Manufacturing",
         description:
@@ -21,7 +19,7 @@ const blogData = [
     },
     {
         id: 2,
-        image: image3,
+        image: "../../../public/blog2.jpg",
         title:
             "3 Canadian Solar Partners with Sol Systems to Ramp Up U.S. Module Manufacturing",
         description:
@@ -30,7 +28,7 @@ const blogData = [
     },
     {
         id: 3,
-        image: image1,
+        image: "../../../public/blog3.png",
         title:
             "4 Canadian Solar Partners with Sol Systems to Ramp Up U.S. Module Manufacturing",
         description:
