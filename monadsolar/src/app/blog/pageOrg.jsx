@@ -7,6 +7,7 @@ import BlogCard from '../../components/navbar/Navbar';
 import Pagination from '@/components/pagination/Pagination';
 import { blogData } from '@/data/BlogData';
 
+
 const Blog = () => {
   const blogCardsPerPage = 6;
   const [currentPage, setCurrentPage] = useState(1);
