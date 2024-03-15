@@ -3,9 +3,10 @@
 import React from 'react'
 import { useState } from 'react'
 import styles from './Blog.module.css'
-import BlogCard from '@/components/BlogCard/BlogCard';
+import BlogCard from '../../components/navbar/Navbar';
 import Pagination from '@/components/pagination/Pagination';
 import { blogData } from '@/data/BlogData';
+
 
 const Blog = () => {
   const blogCardsPerPage = 6;
