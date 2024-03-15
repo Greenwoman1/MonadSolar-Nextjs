@@ -10,6 +10,8 @@ import {
   faSignInAlt,
   faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
+import logoImage from "../../../public/logo-no-background.png"
 
 const Navbar = () => {
   const [isMinimized, setIsMinimized] = useState(false);
@@ -97,10 +99,12 @@ const Navbar = () => {
           <div className={styles.navbar_container}>
             <div className={styles.logo_container}>
               <Link href="/">
-                <img
+                <Image
                   className={styles.logo}
-                  src="./logo-no-background.png"
+                  src={logoImage}
                   alt="logo"
+                  objectFit="cover" // Adjust how the image fits its container
+                  objectPosition="center"
                 />
               </Link>
             </div>
