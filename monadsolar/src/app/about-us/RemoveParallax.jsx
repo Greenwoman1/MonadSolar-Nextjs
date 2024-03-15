@@ -14,7 +14,7 @@ const RemoveParallax = ({ props }) => {
       <ParallaxProvider>
         {props === "first" ? (
           isMobile ? (
-            <Image src={historyimg} alt="Your Image" className={styles.image} />
+            <Image src={historyimg} alt="Your Image" width={650} height={450}  className={styles.image} />
           ) : (
             <Parallax speed={-5}>
               <Image src={historyimg} alt="Your Image" width={650} height={450} className={styles.image} />
