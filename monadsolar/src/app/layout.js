@@ -9,9 +9,9 @@ export const metadata = {
   title: {
     absolute: "",
     default: "MonadSolar",
-    template: ""
- },
- description: "POWERING THE FUTURE WITH SOLAR ENERGY",
+    template: "",
+  },
+  description: "POWERING THE FUTURE WITH SOLAR ENERGY",
 };
 
 export default function RootLayout({ children }) {
