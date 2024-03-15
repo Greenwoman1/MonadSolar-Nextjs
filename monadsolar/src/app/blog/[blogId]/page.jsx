@@ -8,6 +8,7 @@ import { blogData } from '@/data/BlogData';
 import { useRouter } from 'next/navigation';
 
 
+
 const SingleBlog = ({params}) => {
   const router = useRouter()
   const idParams = parseInt( params.blogId)
@@ -41,6 +42,9 @@ const SingleBlog = ({params}) => {
 
     router.push("/blog");
   };
+
+
+ 
 
   return (
     <>
