@@ -186,7 +186,7 @@ const Navbar = () => {
           </div>
           {isMinimized && showLinks && (
             <div className={styles.nav_links_container_toggle}>
-              <CustomLink text="HOME" href="/" />
+            <CustomLink text="HOME" href="/" />
             <CustomLink text="ABOUT US" href="/about-us" />
             <CustomLink text="PRODUCTS" href="/products" />
             <CustomLink text="BLOG" href="/blog" />
