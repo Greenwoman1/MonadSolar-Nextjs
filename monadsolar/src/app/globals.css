@@ -33,4 +33,33 @@
     grid-row: 3; /* Display footer in the third row */
     grid-column: 1 / span 3; /* Span across all columns */
   }
+
+  .page_not_found_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 90vh;
+    gap: 20px;
+  }
+
+  .page_not_found_container h1 {
+    color: #439e77;
+  }
+  
+  .go_back_btn {
+    text-decoration: none;
+    background-color: #6db494;
+    border: 2px solid #6db494;
+    color: white;
+    transition: background-color 0.3s;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+  }
+  
+  .go_back_btn:hover {
+    background-color: transparent;
+    color: #6db494;
+  }
   
