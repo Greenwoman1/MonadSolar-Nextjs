@@ -1,7 +1,8 @@
 "use client";
 import styles from "./header.module.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { Suspense } from "react";
 
 const Header = ({ src, title }) => {
   const bannerImageStyle = () => {
@@ -43,22 +44,24 @@ const Header = ({ src, title }) => {
   return (
     <div className={styles.header}>
       <div className={styles.banner_image} style={bannerImageStyle()}>
-        <div className={styles.banner_text}>
-          {title === "" ? (
-            <>
-              <h1>
-                <span style={{ color: "yellow" }}>M</span>onad
-                <span style={{ color: "yellow" }}>S</span>olar
-              </h1>
+        <Suspense>
+          <div className={styles.banner_text}>
+            {title === "" ? (
+              <>
+                <h1>
+                  <span style={{ color: "yellow" }}>M</span>onad
+                  <span style={{ color: "yellow" }}>S</span>olar
+                </h1>
 
-              <p>Powering the Future with Solar Energy</p>
-            </>
-          ) : (
-            <>
-              <h1>{title}</h1>
-            </>
-          )}
-        </div>
+                <p>Powering the Future with Solar Energy</p>
+              </>
+            ) : (
+              <>
+                <h1>{title}</h1>
+              </>
+            )}
+          </div>
+        </Suspense>
         <a
           href={`#${
             title === "Contact Us"
