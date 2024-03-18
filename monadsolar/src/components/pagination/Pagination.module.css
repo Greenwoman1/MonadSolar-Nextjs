@@ -2,7 +2,6 @@
 .pagination {
   display: flex;
   justify-content: center;
-  
   padding: 5px;
 }
 
@@ -22,10 +21,9 @@
   color: #6db494;
 }
 
-.pagination .active {
+.pagination .active  {
   background-color: transparent;
   color: #6db494;
-  font-weight: bold;
 }
 
 .dropdown_container {

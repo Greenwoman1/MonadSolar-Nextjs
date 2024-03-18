@@ -1,3 +1,4 @@
+"use client"
 import styles from "./Pagination.module.css";
 import Link from "next/link";
 import PageSelect from "./pageSelect/PageSelect"
@@ -6,6 +7,7 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
+import { useState, useEffect } from "react";
 
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
@@ -19,13 +21,26 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   //   onPageChange(selectedPage);
   // };
 
+  const [currentPageFromUrl, setCurrentPageFromUrl] = useState(1);
+
+  useEffect(() => {
+    // Check if window is defined (client-side rendering)
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const pageParam = urlParams.get('page');
+      const page = pageParam ? parseInt(pageParam, 10) : 1;
+      setCurrentPageFromUrl(page);
+      console.log(currentPageFromUrl)
+    }
+  }, [window.location.search]);
+
   const renderPageButtons = () => {
     const visiblePageNumbers = [];
-
+  
     if (currentPage > 3) {
       visiblePageNumbers.push(1, "...");
     }
-
+  
     for (
       let i = Math.max(1, currentPage - 1);
       i <= Math.min(currentPage + 1, totalPages);
@@ -33,21 +48,22 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     ) {
       visiblePageNumbers.push(i);
     }
-
+  
     if (currentPage < totalPages - 1) {
       visiblePageNumbers.push("...", totalPages);
     }
-
+  
     return visiblePageNumbers.map((number, index) => (
-      <Link
+      <a
         key={index}
         href={`?page=${typeof number === "number" ? number : currentPage}`}
         className={currentPage === number ? styles.active : ""}
       >
         {number}
-      </Link>
+      </a>
     ));
   };
+  
 
   return (
     <>
