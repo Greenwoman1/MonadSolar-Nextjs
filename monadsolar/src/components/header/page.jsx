@@ -43,8 +43,9 @@ const Header = ({ src, title }) => {
 
   return (
     <div className={styles.header}>
+              <Suspense>
+
       <div className={styles.banner_image} style={bannerImageStyle()}>
-        <Suspense>
           <div className={styles.banner_text}>
             {title === "" ? (
               <>
@@ -61,7 +62,6 @@ const Header = ({ src, title }) => {
               </>
             )}
           </div>
-        </Suspense>
         <a
           href={`#${
             title === "Contact Us"
@@ -79,6 +79,8 @@ const Header = ({ src, title }) => {
           <FontAwesomeIcon icon={faChevronDown} />{" "}
         </a>
       </div>
+      </Suspense>
+
     </div>
   );
 };
