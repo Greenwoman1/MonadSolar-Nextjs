@@ -2,6 +2,7 @@ import styles from "./AboutUs.module.css";
 import Header from "@/components/header/page";
 import RemoveParallax from "./RemoveParallax";
 import aboutContent from "./aboutContent.json";
+
 export const metadata = {
   title: "About us",
   description: "Our history"
@@ -25,8 +26,7 @@ const AboutUs = () => {
                 </div>
               </div>
             </div>
-
-            <div className={styles.o_nama_main}>
+           <div className={styles.o_nama_main}>
               <div className={styles.column}>
                 <div className={styles.centeredText}>
                   <h1>Environmental, Social and Governance (ESG)</h1>
@@ -39,7 +39,7 @@ const AboutUs = () => {
             </div>
           </section>
         </div>
-        <div className="thirdRow-all-columns">
+          <div className="thirdRow-all-columns">
           <div className={styles.fullImageContainer}>
             <div className={styles.overlay}></div>
             <div className="layout">
@@ -60,5 +60,4 @@ const AboutUs = () => {
     </>
   );
 };
-
 export default AboutUs;
