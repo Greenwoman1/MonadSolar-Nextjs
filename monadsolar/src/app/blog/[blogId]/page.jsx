@@ -4,19 +4,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { blogData } from "@/data/BlogData";
 import Link from "next/link";
-import NotFoundBlog from "./not-found";
-
+import { notFound } from "next/navigation";
+import Image from "next/image";
 const SingleBlog = async ({ params }) => {
   const idParams = parseInt(params.blogId);
+  if (!idParams) notFound();
 
-  console.log(idParams + "neceeee");
-
-  const data = await fetch(`http://localhost:3001/blogs/${idParams}`, {
-    METHOD: "GET",
-  }).then((data) => data.json())
- 
-
-  console.log(data);
+  const data = await fetch(`http://localhost:3001/blogs/${idParams}`).then(
+    (data) => data.json()
+  );
+  if (data.message) notFound();
 
   return (
     <>
@@ -45,7 +42,11 @@ const SingleBlog = async ({ params }) => {
               </div>
 
               <div className={styles.image_container}>
-                <img className={styles.img} src={data.image} alt="" />
+                <img
+                  className={styles.img}
+                  src={data.image}
+                  alt=""
+                />
               </div>
 
               <div

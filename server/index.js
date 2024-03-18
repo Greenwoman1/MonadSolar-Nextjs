@@ -75,7 +75,7 @@ app.get("/blogs/:id", async (req, res) => {
   console.log(id)
   await delay(2000);
   const blog = blogData.find((blog) => blog.id == id);
-  if (!blog) return res.status(404).json()
+  if (!blog) return res.status(404).json({message: "page not found"})
   return res.status(200).json(blog);
 });
 
