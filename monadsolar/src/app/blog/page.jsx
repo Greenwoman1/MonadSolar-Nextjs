@@ -1,7 +1,7 @@
 import Blogs from "./Blogs";
 import Pagination from "./Pagination";
 import { Suspense } from "react";
-import Loading from "../loading";
+import Loading from "../loader";
 const Blog = async ({ searchParams }) => {
   return (
     <>

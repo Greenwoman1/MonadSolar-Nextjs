@@ -1,38 +1,23 @@
 "use client";
-import enviroment from "/public/enviroment.jpg";
-import historyimg from "/public/history.jpg";
 import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 import { useMediaQuery } from "@react-hook/media-query";
 import Image from "next/image";
 import styles from "./AboutUs.module.css";
+import history_image from "/public/history.jpg";
 
-const RemoveParallax = ({ props }) => {
+const RemoveParallax = ({ image }) => {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   return (
     <div className={styles.column}>
       <ParallaxProvider>
-        {props === "first" ? (
+        {image ? (
           isMobile ? (
-            <Image src={historyimg} alt="Your Image" className={styles.image} />
+            <Image src={image} alt="Your Image" className={styles.image} />
           ) : (
-            <Parallax speed={-5}>
+            <Parallax speed={image === history_image ? 0 : -5}>
               <Image
-                src={historyimg}
-                alt="Your Image"
-                width={650}
-                height={450}
-                className={styles.image}
-              />
-            </Parallax>
-          )
-        ) : props === "second" ? (
-          isMobile ? (
-            <Image src={enviroment} alt="Your Image" className={styles.image} />
-          ) : (
-            <Parallax speed={-9}>
-              <Image
-                src={enviroment}
+                src={image}
                 alt="Your Image"
                 width={650}
                 height={450}
