@@ -9,10 +9,13 @@
 .logo {
   width: 250px;
   height: auto;
-  transition: width 0.3s ease;
 }
 
-@media screen and (max-width: 768px) {
+.miniLogo {
+  height: 78px;
+  width: auto;
+}
+/*@media screen and (max-width: 768px) {
   .logo {
     width: 200px; 
   }
@@ -22,7 +25,7 @@
   .logo {
     width: 250px;
   }
-}
+}*/
 
 .search_input {
   
