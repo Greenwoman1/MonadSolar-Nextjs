@@ -5,7 +5,7 @@ import { revalidateTag } from "next/cache";
 import { deleteBlog } from "@/app/utility";
 const DeleteBlog = async ({ params }) => {
   console.log("dosao");
-  const blogId = parseInt(params.blogId);
+  const blogId = params.blogId;
   console.log(blogId);
  const response = async () => await deleteBlog(blogId);
  

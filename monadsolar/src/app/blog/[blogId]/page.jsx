@@ -7,7 +7,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 const SingleBlog = async ({ params }) => {
-  const idParams = parseInt(params.blogId);
+  const idParams = (params.blogId);
   if (!idParams) notFound();
 
   const data = await fetch(`http://localhost:3001/blogs/${idParams}`, {next: {tags:   ['edit-id']

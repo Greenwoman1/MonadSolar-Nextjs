@@ -97,7 +97,7 @@ app.post("/blogs", async (req, res) => {
 });
 
 app.patch("/blogs/:id", async (req, res) => {
-  const id =parseInt( req.params.id);
+  const id =( req.params.id);
 
   console.log(id)
   const { title, description } = req.body;

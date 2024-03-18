@@ -6,7 +6,7 @@ import Editor from "@/components/Editor/Editor";
 import styles from "./account.module.css";
 import EditorPreview from "@/components/EditorPreview/page";
 
-import {saveBlog } from "../../../utility"
+import {saveEditedBlog } from "../../../utility"
 
 const Account = ({params}) => {
   const router = useRouter();
@@ -20,7 +20,7 @@ const Account = ({params}) => {
     description: "",
   });
 
-  const editId = parseInt(params.blogId);
+  const editId = (params.blogId);
 
   console.log(editId)
   const fetchData = async () => {
