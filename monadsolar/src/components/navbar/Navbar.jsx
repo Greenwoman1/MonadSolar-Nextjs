@@ -11,8 +11,8 @@ import {
   faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
-import logoImage from "../../../public/logo-no-background.png"
-
+import logoImage from "../../../public/logo-no-background.png";
+import CustomLink from "./navBarItem";
 const Navbar = () => {
   const [isMinimized, setIsMinimized] = useState(false);
   const [showSearchInput, setShowSearchInput] = useState(false);
@@ -103,33 +103,21 @@ const Navbar = () => {
                   className={styles.logo}
                   src={logoImage}
                   alt="logo"
-                  objectFit="cover" // Adjust how the image fits its container
-                  objectPosition="center"
+                  priority = {true}
+                  
                 />
               </Link>
             </div>
 
             {isMinimized ? null : (
               <div className={styles.nav_links_container}>
-                <Link className={styles.nav_link} href="/">
-                  HOME
-                </Link>
-                <Link className={styles.nav_link} href="/about-us">
-                  ABOUT US
-                </Link>
-                <Link className={styles.nav_link} href="/products">
-                  PRODUCTS
-                </Link> 
-                <Link className={styles.nav_link} href="/blog">
-                  BLOG
-                </Link>
-                <Link className={styles.nav_link} href="/contact">
-                  CONTACT
-                </Link>
+                <CustomLink text="HOME" href="/" />
+                <CustomLink text="ABOUT US" href="/about-us" />
+                <CustomLink text="PRODUCTS" href="/products" />
+                <CustomLink text="BLOG" href="/blog" />
+                <CustomLink text="CONTACT" href="/contact" />
                 {isLoggedIn && (
-                  <Link className={styles.nav_link} href="/account">
-                    ACCOUNT
-                  </Link>
+                  <CustomLink text="ADD BLOG" href="/blog/newBlog" />
                 )}
               </div>
             )}
@@ -198,26 +186,14 @@ const Navbar = () => {
           </div>
           {isMinimized && showLinks && (
             <div className={styles.nav_links_container_toggle}>
-              <Link className={styles.nav_link} href="/">
-                HOME
-              </Link>
-              <Link className={styles.nav_link} href="/about-us">
-                ABOUT US
-              </Link>
-              <Link className={styles.nav_link} href="/products">
-                PRODUCTS
-              </Link> 
-              <Link className={styles.nav_link} href="/blog">
-                BLOG
-              </Link>
-              <Link className={styles.nav_link} href="/contact">
-                CONTACT
-              </Link>
-              {isLoggedIn && (
-                <Link className={styles.nav_link} href="/acc">
-                  ACCOUNT
-                </Link>
-              )}
+            <CustomLink text="HOME" href="/" />
+            <CustomLink text="ABOUT US" href="/about-us" />
+            <CustomLink text="PRODUCTS" href="/products" />
+            <CustomLink text="BLOG" href="/blog" />
+            <CustomLink text="CONTACT" href="/contact" />
+            {isLoggedIn && (
+              <CustomLink text="ADD BLOG" href="/blog/newBlog" />
+            )}
             </div>
           )}
           {isMinimized && showSearchInput && (

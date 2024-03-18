@@ -23,3 +23,10 @@
     grid-template-columns: 1fr;
   }
 }
+
+.loading_block {
+  width: 100px;
+  height: 100px;
+  background-color: #f0f0f0;
+  margin: 10px;
+}

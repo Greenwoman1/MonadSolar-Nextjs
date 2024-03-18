@@ -1,51 +1,19 @@
-"use client"
-
-import React from 'react'
-import styles from "./SingleBlog.module.css"
+import React from "react";
+import styles from "./SingleBlog.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { blogData } from '@/data/BlogData';
-import { useRouter } from 'next/navigation';
-import NotFoundBlog from "./not-found"
+import { blogData } from "@/data/BlogData";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import Image from "next/image";
+const SingleBlog = async ({ params }) => {
+  const idParams = parseInt(params.blogId);
+  if (!idParams) notFound();
 
-
-
-const SingleBlog = ({params}) => {
-  const router = useRouter()
-  const idParams = parseInt( params.blogId)
-  console.log({idParams})
-  const blog = blogData.find((blog) => blog.id === idParams)
-
-
-  if (!blog) {
-    return <NotFoundBlog/>
-  }
-
-  const { title, description, date, image, id } = blog;
-
-  const formattedDate = new Date(date)
-    .toLocaleDateString("en-GB")
-    .split("/")
-    .join(".");
-
-  const handleEdit = () => {
-
-    router.push(`/account?id=${idParams}`, {});
-  };
-
-  const handleDelete = () => {
-    const existingBlogIndex = blogData.findIndex(
-      (blog) => blog.id === idParams
-    );
-    if (existingBlogIndex !== -1) {
-      blogData.splice(existingBlogIndex, 1);
-    }
-
-    router.push("/blog");
-  };
-
-
- 
+  const data = await fetch(`http://localhost:3001/blogs/${idParams}`, {next: {tags: [`blog-${idParams}`]}}).then(
+    (data) => data.json()
+  );
+  if (data.message) notFound();
 
   return (
     <>
@@ -54,37 +22,43 @@ const SingleBlog = ({params}) => {
           <div className={styles.single_blog_wrapper}>
             <div className={styles.single_blog_container}>
               <div className={styles.title_container}>
-                <h1 className={styles.title}>{title}</h1>
+                <h1 className={styles.title}>{data.title}</h1>
               </div>
 
-              <div className={styles.date_container}>{formattedDate}</div>
+              <div className={styles.date_container}>{data.date}</div>
 
               <div className={styles.edit_container}>
-                <i onClick={handleEdit} className={styles.edit_icon}>
-                  <FontAwesomeIcon icon={faPenToSquare} />
-                </i>
-                <i
-                  onClick={handleDelete}
-                  className={styles.edit_icon + " " + styles.delete_icon}
-                >
-                  <FontAwesomeIcon icon={faTrash} />
-                </i>
+                <Link href={`/blog/${idParams}/edit`}>
+                  <i className={styles.edit_icon}>
+                    <FontAwesomeIcon icon={faPenToSquare} />
+                  </i>
+                </Link>
+
+                <Link href={`/blog/${idParams}/delete`}>
+                  <i className={styles.edit_icon + " " + styles.delete_icon}>
+                    <FontAwesomeIcon icon={faTrash} />
+                  </i>
+                </Link>
               </div>
 
               <div className={styles.image_container}>
-                <img className={styles.img} src={image} alt="" />
+                <img
+                  className={styles.img}
+                  src={data.image}
+                  alt=""
+                />
               </div>
 
               <div
                 className={styles.description_container}
-                dangerouslySetInnerHTML={{ __html: description }}
+                dangerouslySetInnerHTML={{ __html: data.description }}
               ></div>
             </div>
           </div>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default SingleBlog
+export default SingleBlog;

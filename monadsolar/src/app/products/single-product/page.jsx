@@ -1,22 +1,22 @@
 import React from "react";
-import styles from "../products/Products.module.css"
-// import prod4 from "../assets/prod4.png";
-// import one from "../assets/reliable.png";
-// import two from "../assets/p.png";
-// import three from "../assets/More-Energy.png";
+import styles from "../Products.module.css"
+import Image from "next/image";
+import reliable from "/public/reliable.png"
+import pimg from "/public/p.png"
+import moren from "/public/More-Energy.png"
 const SingleProduct = () => {
   return (
     <div className="layout">
       <div className="middle">
         <div className={styles.products_main}>
           <div className={styles.column}>
-            <img src="./prod4.png" className={styles.image} />
+            <img src="../prod4.png" className={styles.image} />
           </div>
 
           <div className={styles.columntext}>
             <ul>
               <li className={styles.listed}>
-                <img src="./reliable.png" />
+                <Image src={reliable} />
                 <div>
                   <p>
                     <b>Enhanced reliability</b>
@@ -28,7 +28,7 @@ const SingleProduct = () => {
                 </div>
               </li>
               <li className={styles.listed}>
-                <img src="./p.png" />
+                <Image src={pimg} />
                 <div>
                   <p>
                     <b>Higher energy yield, lower LCOE</b>
@@ -40,7 +40,7 @@ const SingleProduct = () => {
                 </div>
               </li>
               <li className={styles.listed}>
-                <img src="./More-Energy.png" />
+                <Image src={moren} />
                 <div>
                   <p>
                     <b>Bifacial module up to 715W</b>

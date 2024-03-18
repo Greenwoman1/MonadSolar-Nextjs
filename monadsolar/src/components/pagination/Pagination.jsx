@@ -82,11 +82,11 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
           </Link>
         )}
       </div>
-      <PageSelect
+    {/*   <PageSelect
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={onPageChange}
-      />
+      /> */}
       {/* <div className={styles.dropdown_container}> */}
       {/* Dropdown for selecting page */}
       {/* <select

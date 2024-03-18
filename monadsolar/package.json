@@ -22,10 +22,12 @@
     "react-dom": "^18",
     "react-quill": "^2.0.0",
     "react-scroll-parallax": "^3.4.5",
+    "react-spinners": "^0.13.8",
     "swiper": "^11.0.7",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "20.11.27",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
