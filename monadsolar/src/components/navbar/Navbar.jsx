@@ -103,8 +103,8 @@ const Navbar = () => {
                   className={styles.logo}
                   src={logoImage}
                   alt="logo"
-                  objectFit="cover" // Adjust how the image fits its container
-                  objectPosition="center"
+                  priority = {true}
+                  
                 />
               </Link>
             </div>

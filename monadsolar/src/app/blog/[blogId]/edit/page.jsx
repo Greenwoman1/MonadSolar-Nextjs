@@ -64,7 +64,7 @@ const Account = ({params}) => {
     try {
       const requestOptions = {
         method: "PATCH",
-        cache: "no-store",
+        
 
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

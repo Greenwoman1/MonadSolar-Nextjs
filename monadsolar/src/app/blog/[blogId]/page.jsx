@@ -10,7 +10,7 @@ const SingleBlog = async ({ params }) => {
   const idParams = parseInt(params.blogId);
   if (!idParams) notFound();
 
-  const data = await fetch(`http://localhost:3001/blogs/${idParams}`).then(
+  const data = await fetch(`http://localhost:3001/blogs/${idParams}`, {next: {tags: [`blog-${idParams}`]}}).then(
     (data) => data.json()
   );
   if (data.message) notFound();

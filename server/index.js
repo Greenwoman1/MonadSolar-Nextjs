@@ -124,15 +124,15 @@ app.patch("/blogs/:id", async (req, res) => {
   return res.status(200).json();
 });
 
-app.delete("/blogs/:id", async (req, res) => {
+app.delete("/blogs/delete/:id", async (req, res) => {
+  console.log("bilosta")
   const id = req.params.id;
   // Delete a blog by ID
   // Implement your logic here
-  await delay(2000);
 
-  const deletedBlog = blogData.filter((blog) => blog.id !== id);
+  blogData = blogData.filter((blog) => blog.id !== id);
 
-  return res.status(200).json();
+  return res.status(202).json({message: "nema"});
 });
 
 app.listen(port, () => {
