@@ -8,18 +8,17 @@ const Blogs = async ({data}) => {
     <>
       <div className={styles.blog_cards_wrapper}>
         <div className={styles.blog_cards_grid}>
-          {" "}
           {data.map((card, index) => (
             <Suspense key={index} fallback={<div className={styles.loading_block}></div>}>
-            <BlogCard
-              key={index}
-              id={card.id}
-              image={card.image}
-              title={card.title}
-              description={card.description}
-              date={card.date}
-            />
-          </Suspense>
+              <BlogCard
+                key={index}
+                id={card.id}
+                image={card.image}
+                title={card.title}
+                description={card.description}
+                date={card.date}
+              />
+            </Suspense>
 
           ))}
         </div>
