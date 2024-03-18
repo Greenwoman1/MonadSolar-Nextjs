@@ -6,6 +6,8 @@ import Editor from "@/components/Editor/Editor";
 import styles from "./account.module.css";
 import EditorPreview from "@/components/EditorPreview/page";
 
+import {saveBlog } from "../../../utility"
+
 const Account = ({params}) => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -60,36 +62,15 @@ const Account = ({params}) => {
       reader.readAsDataURL(file);
     }
   };
-  const saveBlog = async () => {
-    try {
-      const requestOptions = {
-        method: "PATCH",
-        
 
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          title: blogData.title,
-          description: descriptionValue,
-        }),
-      };
 
-      const response = await fetch(
-        `http://localhost:3001/blogs/${editId}`,
-        requestOptions,
-        
+  const save =  () => {
+  saveEditedBlog(editId, blogData.title, descriptionValue)
+  router.push(`/blog/${editId}`)
 
-      );
 
-      if (response.ok) {
-        router.push(`/blog/${editId}`);
-      } else {
-        console.error("Failed to update blog");
-      }
-    } catch (error) {
-      console.error("Error updating blog:", error);
-    }
-  };
 
+  }
   return (
     <div className="layout">
       <div className="middle">
@@ -111,7 +92,8 @@ const Account = ({params}) => {
             <Editor
               value={descriptionValue}
               setValue={setDescriptionValue}
-              saveBlog={saveBlog}
+              saveBlog={save }
+              
             />
           </div>
           <EditorPreview value={descriptionValue} />

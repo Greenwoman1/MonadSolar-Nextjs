@@ -8,7 +8,7 @@ const Blog = async ({ searchParams }) => {
 
   const data = await fetch(`http://localhost:3001/blogs?page=${page}`, {
     cache: "no-store",
-  })
+  },  { next: { tags: ['delete-blog', 'edit-id', 'new-blog-id'] } })
     .then((response) => response.json())
     .then(({ data }) => data);
 
@@ -17,8 +17,9 @@ const Blog = async ({ searchParams }) => {
 
     const  pagination = await fetch(
       `http://localhost:3001/blogs?page=${page}`, {
-        cache: 'no-store'
-      }
+        cache: 'no-store',
+        
+      }, { next: { tags: ['delete-blog', 'edit-id', 'new-blog-id'] } }
     )
       .then((response) => response.json())
       .then(({  paggination }) => ( paggination ));

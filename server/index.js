@@ -8,9 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 // Static path for serving images
-app.use("/public", express.static(__dirname + "/public"));
-
-const blogData = [
+app.use("/public", express.static(__dirname + "/public"));var blogData = [
   {
     id: 1,
     image: `http://localhost:${port}/public/blog1.jpg`,
@@ -124,15 +122,20 @@ app.patch("/blogs/:id", async (req, res) => {
   return res.status(200).json();
 });
 
-app.delete("/blogs/delete/:id", async (req, res) => {
-  console.log("bilosta")
-  const id = req.params.id;
-  // Delete a blog by ID
-  // Implement your logic here
+app.delete("/blogs/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    console.log("Deleting blog with ID:", id);
 
-  blogData = blogData.filter((blog) => blog.id !== id);
+    // Implement your logic to delete a blog by ID
+     blogData.filter((blog) => blog.id !== id);
 
-  return res.status(202).json({message: "nema"});
+console.log(blogData)
+    return res.status(202).json(blogData);
+  } catch (error) {
+    console.error("Error deleting blog:", error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
 });
 
 app.listen(port, () => {
