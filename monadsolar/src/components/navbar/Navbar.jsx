@@ -127,8 +127,8 @@ const Navbar = () => {
                   CONTACT
                 </Link>
                 {isLoggedIn && (
-                  <Link className={styles.nav_link} href="/account">
-                    ACCOUNT
+                  <Link className={styles.nav_link} href="/blog/newBlog">
+                    ADD BLOG
                   </Link>
                 )}
               </div>
@@ -214,9 +214,9 @@ const Navbar = () => {
                 CONTACT
               </Link>
               {isLoggedIn && (
-                <Link className={styles.nav_link} href="/acc">
-                  ACCOUNT
-                </Link>
+                  <Link className={styles.nav_link} href="/blog/newBlog">
+                    ADD BLOG
+                  </Link>
               )}
             </div>
           )}
