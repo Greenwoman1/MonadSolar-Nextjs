@@ -4,7 +4,6 @@ import "./globals.css";
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
 
-import { Metadata } from "next";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -21,11 +20,13 @@ export default function RootLayout({ children }) {
     <html lang="en">
 
       <body className={inter.className}  suppressHydrationWarning={true}>
+     
         <Navbar />
 
         {children}
 
         <Footer />
+      
       </body>
     </html>
   );

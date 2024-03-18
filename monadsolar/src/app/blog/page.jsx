@@ -1,15 +1,16 @@
 import Blogs from "./Blogs";
 import Pagination from "./Pagination";
 import { Suspense } from "react";
+import Loading from "../loading";
 const Blog = async ({ searchParams }) => {
   return (
     <>
       <div className="layout">
         <div className="middle">
-          <Suspense fallback={<div>Loading</div>}>
+          <Suspense fallback={<Loading/>}>
             <Blogs />
           </Suspense>
-          <Suspense fallback={<div>Loading</div>}>
+          <Suspense fallback={<Loading/>}>
             <Pagination />
           </Suspense>
         </div>
