@@ -53,7 +53,6 @@ app.get("/blogs", async (req, res) => {
   // Get all blogs
   // Implement your logic here
 
-  await delay(2000);
   const blogsPerPage = 2;
   const startIndex = (page - 1) * blogsPerPage;
   const endIndex = page * blogsPerPage;

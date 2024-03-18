@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import styles from "./delete.module.css"
 import Link from "next/link";
 const DeleteBlog = async ({ params }) => {
@@ -15,12 +15,14 @@ const DeleteBlog = async ({ params }) => {
   }
   return (
     <div className={styles.centered}>
+      <Suspense>
         <div className={styles.message}>
           <p>Blog successfully deleted.</p>
           <p>
             Return to <Link href="/">homepage</Link>.
           </p>
         </div>
+        </Suspense>
     </div>
   );
 };

@@ -1,41 +1,22 @@
-"use client";
-
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./SingleBlog.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { blogData } from '@/data/BlogData';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import NotFoundBlog from "./not-found"
+import { blogData } from "@/data/BlogData";
+import Link from "next/link";
+import NotFoundBlog from "./not-found";
 
-
-const SingleBlog = ({ params }) => {
-  const router = useRouter();
+const SingleBlog = async ({ params }) => {
   const idParams = parseInt(params.blogId);
-  const blog = blogData.find((blog) => blog.id === idParams);
 
-  if (!blog) {
-    return <NotFoundBlog/>
-  }
+  console.log(idParams + "neceeee");
 
-  const { title, description, date, image, id } = blog;
+  const data = await fetch(`http://localhost:3001/blogs/${idParams}`, {
+    METHOD: "GET",
+  }).then((data) => data.json())
+ 
 
-  const formattedDate = new Date(date)
-    .toLocaleDateString("en-GB")
-    .split("/")
-    .join(".");
-
-  const handleDelete = () => {
-    const existingBlogIndex = blogData.findIndex(
-      (blog) => blog.id === idParams
-    );
-    if (existingBlogIndex !== -1) {
-      blogData.splice(existingBlogIndex, 1);
-    }
-
-    router.push("/blog");
-  };
+  console.log(data);
 
   return (
     <>
@@ -44,10 +25,10 @@ const SingleBlog = ({ params }) => {
           <div className={styles.single_blog_wrapper}>
             <div className={styles.single_blog_container}>
               <div className={styles.title_container}>
-                <h1 className={styles.title}>{title}</h1>
+                <h1 className={styles.title}>{data.title}</h1>
               </div>
 
-              <div className={styles.date_container}>{formattedDate}</div>
+              <div className={styles.date_container}>{data.date}</div>
 
               <div className={styles.edit_container}>
                 <Link href={`/blog/${idParams}/edit`}>
@@ -56,7 +37,7 @@ const SingleBlog = ({ params }) => {
                   </i>
                 </Link>
 
-                <Link  href={`/blog/${idParams}/delete`}>
+                <Link href={`/blog/${idParams}/delete`}>
                   <i className={styles.edit_icon + " " + styles.delete_icon}>
                     <FontAwesomeIcon icon={faTrash} />
                   </i>
@@ -64,12 +45,12 @@ const SingleBlog = ({ params }) => {
               </div>
 
               <div className={styles.image_container}>
-                <img className={styles.img} src={image} alt="" />
+                <img className={styles.img} src={data.image} alt="" />
               </div>
 
               <div
                 className={styles.description_container}
-                dangerouslySetInnerHTML={{ __html: description }}
+                dangerouslySetInnerHTML={{ __html: data.description }}
               ></div>
             </div>
           </div>
