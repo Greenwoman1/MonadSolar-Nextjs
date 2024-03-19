@@ -3,6 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { Suspense } from "react";
 import Link from "next/link";
+import Loading from "../../app/loader";
+
+
+
 
 const Header = ({ src, title }) => {
   const bannerImageStyle = () => {
@@ -10,7 +14,7 @@ const Header = ({ src, title }) => {
       return {
         backgroundImage: `linear-gradient(
             rgba(0, 0, 0, 0.6),
-            rgba(0, 0, 0, 0.6)
+            rgba(0, 0, 0, 0.6)           
           ),
           url(${src})`,
       };
@@ -19,7 +23,7 @@ const Header = ({ src, title }) => {
         backgroundImage: `linear-gradient(
           rgba(0, 0, 0, 0.6),
           rgba(0, 0, 0, 0.6)
-          ),
+          ), 
           url(${src})`,
       };
     } else if (title === "Contact Us") {
@@ -43,7 +47,7 @@ const Header = ({ src, title }) => {
 
   return (
     <div className={styles.header}>
-      <Suspense>
+      <Suspense fallback={<Loading />}>
         <div className={styles.banner_image} style={bannerImageStyle()}>
           <div className={styles.banner_text}>
             {title === "" ? (
