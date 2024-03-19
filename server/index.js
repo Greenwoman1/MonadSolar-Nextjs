@@ -8,9 +8,10 @@ app.use(cors());
 app.use(express.json());
 
 // Static path for serving images
-app.use("/public", express.static(__dirname + "/public"));var blogData = [
+app.use("/public", express.static(__dirname + "/public"));
+var blogData = [
   {
-    id: 1,
+    id: "1",
     image: `http://localhost:${port}/public/blog1.jpg`,
     title:
       "2 Canadian Solar Partners with Sol Systems to Ramp Up U.S. Module Manufacturing",
@@ -19,7 +20,7 @@ app.use("/public", express.static(__dirname + "/public"));var blogData = [
     date: "12 December 2023",
   },
   {
-    id: 2,
+    id: "2",
     image: `http://localhost:${port}/public/blog1.jpg`,
     title:
       "3 Canadian Solar Partners with Sol Systems to Ramp Up U.S. Module Manufacturing",
@@ -28,7 +29,7 @@ app.use("/public", express.static(__dirname + "/public"));var blogData = [
     date: "13 December 2023",
   },
   {
-    id: 3,
+    id: "3",
     image: `http://localhost:${port}/public/blog1.jpg`,
     title:
       "4 Canadian Solar Partners with Sol Systems to Ramp Up U.S. Module Manufacturing",
@@ -55,7 +56,7 @@ app.get("/blogs", async (req, res) => {
   const startIndex = (page - 1) * blogsPerPage;
   const endIndex = page * blogsPerPage;
   const filteredBlogs = blogData.slice(startIndex, endIndex);
-  
+
   return res.status(200).json({
     data: filteredBlogs,
     paggination: {
@@ -70,10 +71,10 @@ app.get("/blogs/:id", async (req, res) => {
   // Get a single blog by ID
   // Implement your logic here
 
-  console.log(id)
+  console.log(id);
   await delay(2000);
   const blog = blogData.find((blog) => blog.id == id);
-  if (!blog) return res.status(404).json({message: "page not found"})
+  if (!blog) return res.status(404).json({ message: "page not found" });
   return res.status(200).json(blog);
 });
 
@@ -92,50 +93,49 @@ app.post("/blogs", async (req, res) => {
 
   await delay(2000);
   blogData.push(newBlog);
-  console.log(newBlog)
+  console.log(newBlog);
   return res.status(201).json({ id: newBlog.id });
 });
 
 app.patch("/blogs/:id", async (req, res) => {
-  const id =( req.params.id);
+  const id = req.params.id;
 
-  console.log(id)
+  console.log(id);
   const { title, description } = req.body;
   // Update a blog by ID
   // Implement your logic here
   await delay(2000);
-    console.log(description)
+  console.log(description);
   const index = blogData.findIndex((blog) => blog.id === id);
 
   if (index == -1) return res.status(400).json();
-    console.log("hocemo li", index)
+  console.log("hocemo li", index);
 
   blogData[index] = {
-    ...blogData[index ],
+    ...blogData[index],
     title,
     description,
     date: new Date(),
   };
 
-  console.log(blogData)
+  console.log(blogData);
 
   return res.status(200).json();
 });
 
 app.delete("/blogs/:id", async (req, res) => {
-  try {
     const id = req.params.id;
     console.log("Deleting blog with ID:", id);
 
     // Implement your logic to delete a blog by ID
-     blogData.filter((blog) => blog.id !== id);
-
-console.log(blogData)
+    const index = blogData.findIndex(blog => blog.id == id);
+    if (index != -1) {
+      console.log("uspio")
+        blogData = [...blogData.slice(0, index), ...blogData.slice(index + 1)];
+    }
+    console.log(blogData);
     return res.status(202).json(blogData);
-  } catch (error) {
-    console.error("Error deleting blog:", error);
-    return res.status(500).json({ error: "Internal server error" });
-  }
+  
 });
 
 app.listen(port, () => {

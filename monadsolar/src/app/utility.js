@@ -30,12 +30,10 @@ export const saveEditedBlog = async (id, title, descriptionValue) => {
 
 export const deleteBlog = async (id) => {
   try {
-
     console.log(id, 'dosao u id')
     const res = await fetch(`http://localhost:3001/blogs/${id}`, {
       method: "DELETE",
-    });
-
+    }); 
     revalidateTag('delete-blog')
 
     return res.message
