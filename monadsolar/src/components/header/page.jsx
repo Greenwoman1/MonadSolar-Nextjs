@@ -2,6 +2,7 @@ import styles from "./header.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { Suspense } from "react";
+import Link from "next/link";
 
 const Header = ({ src, title }) => {
   const bannerImageStyle = () => {
@@ -61,7 +62,7 @@ const Header = ({ src, title }) => {
               </>
             )}
           </div>
-        <a
+        <Link
           href={`#${
             title === "Contact Us"
               ? "contact_sec"
@@ -76,7 +77,7 @@ const Header = ({ src, title }) => {
           className={styles.banner_button}
         >
           <FontAwesomeIcon icon={faChevronDown} />{" "}
-        </a>
+        </Link>
       </div>
       </Suspense>
 
