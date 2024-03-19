@@ -49,6 +49,10 @@
   display: flex;
   justify-content: flex-end;
   padding: 10px 50px;
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  width: 100%;
 }
 
 .minimized_icon_btn {
@@ -88,9 +92,10 @@
   justify-content: center;
   align-items: center;
   padding: 20px 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-out;
-  
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  width: 100%;
 }
 
 .nav_links_container_toggle .nav_link{
