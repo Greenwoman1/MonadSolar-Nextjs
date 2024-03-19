@@ -3,9 +3,9 @@ import React from "react";
 import Link from "next/link";
 import styles from "./Navbar.module.css";
 
-const CustomLink = ({ text, href }) => {
+const CustomLink = ({ text, href, onClick }) => {
   return (
-    <Link href={href} className={styles.nav_link}>
+    <Link onClick={onClick} href={href} className={styles.nav_link}>
       {text}
     </Link>
   );

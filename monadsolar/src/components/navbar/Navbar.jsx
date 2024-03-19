@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./Navbar.module.css";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,7 +12,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import logoImage from "../../../public/logo-no-background.png";
+import miniLogoImage from "../../../public/logo-small-no-background.png"
 import CustomLink from "./navBarItem";
+
 const Navbar = () => {
   const [isMinimized, setIsMinimized] = useState(false);
   const [showSearchInput, setShowSearchInput] = useState(false);
@@ -20,6 +22,8 @@ const Navbar = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const navLinksContainerRef = useRef()
+  const searchContainerRef = useRef()
 
   const searchBlogs = (searchTerm) => {
     const filteredBlogs = blogData.filter((blog) => {
@@ -44,8 +48,32 @@ const Navbar = () => {
   };
 
   useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        navLinksContainerRef.current &&
+        !navLinksContainerRef.current.contains(event.target)
+      ) {
+        setShowLinks(false)
+      }
+
+      if (
+        searchContainerRef.current &&
+        !searchContainerRef.current.contains(event.target)
+      ) {
+        setShowSearchInput(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+  }, [])
+
+  useEffect(() => {
     const handleResize = () => {
-      const isScreenMinimized = window.innerWidth <= 1300;
+      const isScreenMinimized = window.innerWidth <= 1400;
       setIsMinimized(isScreenMinimized);
       setShowSearchInput(false);
       setShowLinks(false);
@@ -92,6 +120,11 @@ const Navbar = () => {
     setIsLoggedIn(false);
   };
 
+  const handleClick = () => {
+    setShowLinks(false)
+    setShowSearchInput(false)
+  }
+
   return (
     <>
       <div className="layout">
@@ -100,8 +133,8 @@ const Navbar = () => {
             <div className={styles.logo_container}>
               <Link href="/">
                 <Image
-                  className={styles.logo}
-                  src={logoImage}
+                  className={!isMinimized ? styles.logo : styles.miniLogo}
+                  src={isMinimized ? miniLogoImage : logoImage}
                   alt="logo"
                   priority = {true}
                   
@@ -138,33 +171,7 @@ const Navbar = () => {
                   <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
 
-                {isLoggedIn ? (
-                  <button
-                    className={styles.minimized_icon_btn}
-                    onClick={handleLogoutClick}
-                  >
-                    <FontAwesomeIcon icon={faSignOutAlt} />
-                  </button>
-                ) : (
-                  <button
-                    className={styles.minimized_icon_btn}
-                    onClick={handleLoginClick}
-                  >
-                    <FontAwesomeIcon icon={faSignInAlt} />
-                  </button>
-                )}
-              </div>
-            ) : (
-              <>
-                <div className={styles.search_container}>
-                  <input
-                    type="text"
-                    placeholder="Search..."
-                    className={styles.search_input}
-                    value={searchTerm}
-                    onChange={handleSearch}
-                  />
-
+                <div className={styles.auth_btns_container}>
                   {isLoggedIn ? (
                     <button
                       className={styles.minimized_icon_btn}
@@ -181,23 +188,56 @@ const Navbar = () => {
                     </button>
                   )}
                 </div>
+
+              </div>
+            ) : (
+              <>
+                <div className={styles.search_container}>
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    className={styles.search_input}
+                    value={searchTerm}
+                    onChange={handleSearch}
+                  />
+                  
+                  <div className={styles.auth_btns_container}>
+                    {isLoggedIn ? (
+                      <button
+                        className={styles.minimized_icon_btn}
+                        onClick={handleLogoutClick}
+                      >
+                        <FontAwesomeIcon icon={faSignOutAlt} />
+                      </button>
+                    ) : (
+                      <button
+                        className={styles.minimized_icon_btn}
+                        onClick={handleLoginClick}
+                      >
+                        <FontAwesomeIcon icon={faSignInAlt} />
+                      </button>
+                    )}
+                  </div>
+
+                  
+                </div>
               </>
             )}
           </div>
           {isMinimized && showLinks && (
-            <div className={styles.nav_links_container_toggle}>
-            <CustomLink text="HOME" href="/" />
-            <CustomLink text="ABOUT US" href="/about-us" />
-            <CustomLink text="PRODUCTS" href="/products" />
-            <CustomLink text="BLOG" href="/blog" />
-            <CustomLink text="CONTACT" href="/contact" />
+            <div className={styles.nav_links_container_toggle} ref={navLinksContainerRef}>
+            <CustomLink onClick={handleClick} text="HOME" href="/" />
+            <CustomLink onClick={handleClick} text="ABOUT US" href="/about-us" />
+            <CustomLink onClick={handleClick} text="PRODUCTS" href="/products" />
+            <CustomLink onClick={handleClick} text="BLOG" href="/blog" />
+            <CustomLink onClick={handleClick} text="CONTACT" href="/contact" />
             {isLoggedIn && (
-              <CustomLink text="ADD BLOG" href="/blog/newBlog" />
+              <CustomLink onClick={handleClick} text="ADD BLOG" href="/blog/newBlog" />
             )}
             </div>
           )}
           {isMinimized && showSearchInput && (
-            <div className={styles.search_container_toggle}>
+            <div className={styles.search_container_toggle} ref={searchContainerRef}>
               <input
                 type="text"
                 placeholder="Search..."
