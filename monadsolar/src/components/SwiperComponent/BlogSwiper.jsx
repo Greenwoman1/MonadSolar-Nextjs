@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
-import './swiper.css';
+import "./swiper.css";
 import { blogData } from "@/app/BlogData/BlogData";
 import { EffectCoverflow, Navigation, Pagination } from "swiper/modules";
 import Image from "next/image";
@@ -15,12 +15,18 @@ import Image from "next/image";
 export const blogDataMapSlider = (a) => {
   return (
     <>
-      { blogData.map((blog, index) => (
-        <SwiperSlide key={ index +a +1}>
-          {console.log( index +a )}
+      {blogData.map((blog, index) => (
+        <SwiperSlide key={index + a + 1}>
+          {console.log(index + a)}
           <div className="slide-content">
             <Link href={`/blog/${blog.id}`}>
-              <Image src="/blog1.jpg" width={400} height={200} style={{height: 'auto'}} alt="Nature" />{" "}
+              <Image
+                src="/blog1.jpg"
+                width={400}
+                height={200}
+                style={{ height: "auto" }}
+                alt="Nature"
+              />{" "}
             </Link>
 
             <div className="slide-title">
@@ -32,6 +38,7 @@ export const blogDataMapSlider = (a) => {
     </>
   );
 };
+
 export const slides = 3;
 const SwiperComponent = () => {
   const [slidesPerView, setSlidesPerView] = useState(3);
@@ -93,6 +100,5 @@ const SwiperComponent = () => {
     </>
   );
 };
-
 
 export default SwiperComponent;

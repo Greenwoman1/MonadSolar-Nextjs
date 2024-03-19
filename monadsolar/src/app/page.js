@@ -1,6 +1,6 @@
 import Header from "@/components/header/page";
 import styles from "./home.module.css";
-import SwiperComponent from "@/components/SwiperComponent/page";
+import SwiperComponent from "../components/SwiperComponent/BlogSwiper";
 import "./globals.css";
 import ServiceOffer from "@/components/service-offer/service-offer";
 import { Suspense } from "react";
