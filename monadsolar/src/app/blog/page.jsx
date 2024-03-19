@@ -28,10 +28,10 @@ const Blog = async ({ searchParams }) => {
     <>
       <div className="layout">
         <div className="middle">
-          <Suspense fallback={<div>Loading</div>}>
+          <Suspense fallback={<Loading/>}>
             <Blogs data = {data} />
           </Suspense>
-          <Suspense fallback={<div>Loading</div>}>
+          <Suspense fallback={<Loading/>}>
             <Pagination page = {page} pagination = {pagination}/>
           </Suspense>
         </div>
