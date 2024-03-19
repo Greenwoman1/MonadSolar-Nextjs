@@ -126,7 +126,7 @@ app.patch("/blogs/:id", async (req, res) => {
 app.delete("/blogs/:id", async (req, res) => {
     const id = req.params.id;
     console.log("Deleting blog with ID:", id);
-
+  await delay(2000)
     // Implement your logic to delete a blog by ID
     const index = blogData.findIndex(blog => blog.id == id);
     if (index != -1) {

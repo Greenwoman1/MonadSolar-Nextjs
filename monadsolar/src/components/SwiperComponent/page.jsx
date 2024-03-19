@@ -1,25 +1,43 @@
-
-"use client"
+"use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { useEffect, useState } from "react";
-import Link from "next/link"
-import "./swiper.css";
+import { Suspense, useEffect, useState } from "react";
+import Link from "next/link";
+import './swiper.css';
 import { blogData } from "@/app/BlogData/BlogData";
 import { EffectCoverflow, Navigation, Pagination } from "swiper/modules";
 import Image from "next/image";
+
+export const blogDataMapSlider = (a) => {
+  return (
+    <>
+      { blogData.map((blog, index) => (
+        <SwiperSlide key={ blog.id }>
+          <div className="slide-content">
+            <Link href={`/blog/${blog.id}`}>
+              <Image src="/blog1.jpg" width={400} height={200} alt="Nature" />
+            </Link>
+
+            <div className="slide-title">
+              <h3>{blog.title}</h3>
+            </div>
+          </div>
+        </SwiperSlide>
+      ))}
+    </>
+  );
+};
+export const slides = 3;
 const SwiperComponent = () => {
   const [slidesPerView, setSlidesPerView] = useState(3);
 
-
   useEffect(() => {
     const handleResize = () => {
-      let newSlidesPerView = 3; // Početna vrijednost slidesPerView
+      let newSlidesPerView = 3;
 
       if (window.innerWidth <= 640) {
         newSlidesPerView = 1;
@@ -28,7 +46,7 @@ const SwiperComponent = () => {
       }
 
       if (blogData.length < newSlidesPerView) {
-        newSlidesPerView = blogData.length; // Ako ima manje slajdova nego što je slidesPerView, postavite slidesPerView na broj dostupnih slajdova
+        newSlidesPerView = blogData.length;
       }
 
       setSlidesPerView(newSlidesPerView);
@@ -53,7 +71,7 @@ const SwiperComponent = () => {
           loop={true}
           grabCursor={true}
           centeredSlides={true}
-          slidesPerView={slidesPerView}
+          slidesPerView={slidesPerView || slides}
           navigation={true}
           coverflowEffect={{
             rotate: 50,
@@ -65,37 +83,15 @@ const SwiperComponent = () => {
           modules={[EffectCoverflow, Pagination, Navigation]}
           className="mySwiper"
         >
-          {blogData.map((blog) => (
-            <SwiperSlide key={blog.id}>
-              <div className="slide-content">
-                <Link href={`/blog/${blog.id}`}>
-                  <Image src="/blog1.jpg" width={400} height={200} alt="Nature" />{" "}
-                </Link>
-
-                <div className="slide-title">
-                  <h3>{blog.title}</h3>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-
-          {blogData.length <= 3 &&
-            blogData.map((blog) => (
-              <SwiperSlide key={blog.id}>
-                <div className="slide-content">
-                  <Link href={`/blog/${blog.id}`}>
-                  <Image src="/blog1.jpg" width={400} height={200} alt="Nature" />{" "}
-                  </Link>
-
-                  <div className="slide-title">
-                    <h3>{blog.title}</h3>
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))}
+          <Suspense>
+            {blogDataMapSlider(1)}
+            {blogData.length <= 3 && blogDataMapSlider(2)}
+          </Suspense>
         </Swiper>
       </section>
     </>
   );
 };
+
+
 export default SwiperComponent;
