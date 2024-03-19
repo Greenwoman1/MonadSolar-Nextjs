@@ -23,7 +23,9 @@ const awards = [
 ]
 
 const AboutUs = () => {
+
   return (
+
     <>
       <div className={styles.container}>
         <Header src={"./about-us-cover.jpg"} title={"About us"} />
@@ -78,6 +80,7 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
+      
     </>
   );
 };
