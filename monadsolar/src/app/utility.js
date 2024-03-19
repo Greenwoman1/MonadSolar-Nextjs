@@ -1,6 +1,6 @@
 "use server";
 import { TextareaAutosize } from "@mui/material";
-import { revalidateTag } from "next/cache";
+import { revalidateTag, revalidatePath } from "next/cache";
 export const saveEditedBlog = async (id, title, descriptionValue) => {
   try {
     const requestOptions = {
@@ -34,7 +34,9 @@ export const deleteBlog = async (id) => {
     const res = await fetch(`http://localhost:3001/blogs/${id}`, {
       method: "DELETE",
     }); 
-    revalidateTag('delete-blog')
+    // revalidateTag('delete-blog')
+    // revalidatePath('/blog')
+    revalidatePath('/blogs')
 
     return res.message
   } catch (error) {

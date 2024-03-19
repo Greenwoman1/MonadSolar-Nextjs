@@ -128,7 +128,7 @@ app.delete("/blogs/:id", async (req, res) => {
     console.log("Deleting blog with ID:", id);
   await delay(2000)
     // Implement your logic to delete a blog by ID
-    const index = blogData.findIndex(blog => blog.id == id);
+    const index = blogData.findIndex(blog => blog.id === id);
     if (index != -1) {
       console.log("uspio")
         blogData = [...blogData.slice(0, index), ...blogData.slice(index + 1)];

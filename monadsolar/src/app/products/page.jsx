@@ -3,11 +3,9 @@ import styles from "./Products.module.css";
 import Link from "next/link";
 import Header from "@/components/header/page";
 import Image from "next/image";
-import product2 from "/public/product2.png"
-import prod23 from "/public/prod23.png"
-import proud33 from "/public/proud33.png"
-
-
+import product2 from "/public/product2.png";
+import prod23 from "/public/prod23.png";
+import proud33 from "/public/proud33.png";
 
 export const metadata = {
   title: "Products",
@@ -25,11 +23,7 @@ const Products = () => {
           <section id="products_sec">
             <div className={styles.products_main}>
               <div className={styles.column}>
-                <Image
-                  src={product2}
-                  alt="image"
-                  className={styles.image}
-                />
+                <Image src={product2} alt="image" className={styles.image} />
               </div>
 
               <div className={styles.columntext}>
@@ -84,21 +78,13 @@ const Products = () => {
                 </div>
               </div>
               <div className={styles.column}>
-                <Image
-                  alt="image"
-                  src={prod23}
-                  className={styles.image}
-                />
+                <Image alt="image" src={prod23} className={styles.image} />
               </div>
             </div>
 
             <div className={styles.products_main}>
               <div className={styles.column}>
-                <Image
-                  alt="image"
-                  src={proud33}
-                  className={styles.image}
-                />
+                <Image alt="image" src={proud33} className={styles.image} />
               </div>
               <div className={styles.columntext}>
                 <div className={styles.text}>
@@ -151,11 +137,7 @@ const Products = () => {
                 </div>
               </div>
               <div className={styles.column}>
-                <Image
-                  alt="image"
-                  src={prod23}
-                  className={styles.image}
-                />
+                <Image alt="image" src={prod23} className={styles.image} />
               </div>
             </div>
           </section>

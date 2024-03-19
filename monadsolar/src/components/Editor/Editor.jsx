@@ -1,22 +1,17 @@
-
-"use client"
+"use client";
 
 import { useCallback, useMemo, useRef } from "react";
 
 import QuillEditor from "react-quill";
-import "./editor.css"
+import "./editor.css";
 import "react-quill/dist/quill.snow.css";
 import styles from "./Editor.module.css";
 
-
-
-
-const Editor = ({title, image ,  value, setValue, saveBlog}) => {
-
+const Editor = ({ title, image, value, setValue, saveBlog }) => {
   const quill = useRef();
 
-
   const imageHandler = useCallback(() => {
+    if (typeof document === "undefined") return;
     const input = document.createElement("input");
     input.setAttribute("type", "file");
     input.setAttribute("accept", "image/*");
@@ -85,20 +80,17 @@ const Editor = ({title, image ,  value, setValue, saveBlog}) => {
     <div className={styles.wrapper}>
       <label className={styles.label}>Editor Content</label>
       <div className={styles.quill_container}>
-      <QuillEditor
-        ref={(el) => (quill.current = el)}
-        className={styles.editor}
-        theme="snow"
-
-        value={value}
-        formats={formats}
-        modules={modules}
-        onChange={(value) => setValue(value)}
-      />
-      
+        <QuillEditor
+          ref={(el) => (quill.current = el)}
+          className={styles.editor}
+          theme="snow"
+          value={value}
+          formats={formats}
+          modules={modules}
+          onChange={(value) => setValue(value)}
+        />
       </div>
       <button onClick={saveBlog}>Spremi Blog</button>
-
     </div>
   );
 };

@@ -1,27 +1,25 @@
 import React from "react";
-import styles from "./ContactForm.module.css"
+import styles from "./ContactForm.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRoad, faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 const ContactForm = () => {
   return (
     <section id="contact_sec" className={styles.kontakt_form}>
-      
-
       <div className={styles.wrapper}>
         <div className={styles.company_info}>
           <h3>MonadSolar</h3>
           <div className={styles.info}>
-          <FontAwesomeIcon icon={faRoad} className={styles.icon} />
- <p>44 Main Street</p> 
+            <FontAwesomeIcon icon={faRoad} className={styles.icon} />
+            <p>44 Main Street</p>
           </div>
           <div className={styles.info}>
-          <FontAwesomeIcon icon={faPhone} className={styles.icon} />
- <p>(555) 555-5555</p>
+            <FontAwesomeIcon icon={faPhone} className={styles.icon} />
+            <p>(555) 555-5555</p>
           </div>
           <div className={styles.info}>
-          <FontAwesomeIcon icon={faEnvelope} className={styles.icon} /><p>monad.solar@gmail.com</p>
-            
+            <FontAwesomeIcon icon={faEnvelope} className={styles.icon} />
+            <p>monad.solar@gmail.com</p>
           </div>
         </div>
 

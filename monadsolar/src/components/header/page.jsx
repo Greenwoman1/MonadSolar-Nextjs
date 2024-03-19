@@ -43,9 +43,8 @@ const Header = ({ src, title }) => {
 
   return (
     <div className={styles.header}>
-              <Suspense>
-
-      <div className={styles.banner_image} style={bannerImageStyle()}>
+      <Suspense>
+        <div className={styles.banner_image} style={bannerImageStyle()}>
           <div className={styles.banner_text}>
             {title === "" ? (
               <>
@@ -62,25 +61,24 @@ const Header = ({ src, title }) => {
               </>
             )}
           </div>
-        <Link
-          href={`#${
-            title === "Contact Us"
-              ? "contact_sec"
-              : title === "Products"
-              ? "products_sec"
-              : title === "About us"
-              ? "about_sec"
-              : title === ""
-              ? "sec1"
-              : ""
-          }`}
-          className={styles.banner_button}
-        >
-          <FontAwesomeIcon icon={faChevronDown} />{" "}
-        </Link>
-      </div>
+          <Link
+            href={`#${
+              title === "Contact Us"
+                ? "contact_sec"
+                : title === "Products"
+                ? "products_sec"
+                : title === "About us"
+                ? "about_sec"
+                : title === ""
+                ? "sec1"
+                : ""
+            }`}
+            className={styles.banner_button}
+          >
+            <FontAwesomeIcon icon={faChevronDown} />{" "}
+          </Link>
+        </div>
       </Suspense>
-
     </div>
   );
 };

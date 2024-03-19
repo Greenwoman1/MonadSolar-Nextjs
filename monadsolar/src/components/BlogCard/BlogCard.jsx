@@ -1,5 +1,3 @@
-"use client"
-
 import React from "react";
 import styles from "./BlogCard.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,19 +8,6 @@ import Image from "next/image";
 
 
 const BlogCard = (props) => {
-  
-
-  const handleMoreNavigation = () => {
-    const blogData = {
-      title: props.title,
-      description: props.description,
-      date: props.date,
-      image: props.image,
-      id: props.id,
-    };
-    {/*router.push(`/blog/${encodeURIComponent(props.id)}`, { state: { blogData } });*/}
-    
-  };
 
   return (
     <div className={styles.blog_card_container}>
