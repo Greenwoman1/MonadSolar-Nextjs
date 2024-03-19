@@ -53,7 +53,6 @@ app.get("/blogs", async (req, res) => {
   // Get all blogs
   // Implement your logic here
 
-  await delay(2000);
   const blogsPerPage = 2;
   const startIndex = (page - 1) * blogsPerPage;
   const endIndex = page * blogsPerPage;
@@ -76,7 +75,7 @@ app.get("/blogs/:id", async (req, res) => {
   console.log(id)
   await delay(2000);
   const blog = blogData.find((blog) => blog.id == id);
-  if (!blog) return res.status(404).json()
+  if (!blog) return res.status(404).json({message: "page not found"})
   return res.status(200).json(blog);
 });
 
@@ -125,15 +124,15 @@ app.patch("/blogs/:id", async (req, res) => {
   return res.status(200).json();
 });
 
-app.delete("/blogs/:id", async (req, res) => {
+app.delete("/blogs/delete/:id", async (req, res) => {
+  console.log("bilosta")
   const id = req.params.id;
   // Delete a blog by ID
   // Implement your logic here
-  await delay(2000);
 
-  const deletedBlog = blogData.filter((blog) => blog.id !== id);
+  blogData = blogData.filter((blog) => blog.id !== id);
 
-  return res.status(200).json();
+  return res.status(202).json({message: "nema"});
 });
 
 app.listen(port, () => {
