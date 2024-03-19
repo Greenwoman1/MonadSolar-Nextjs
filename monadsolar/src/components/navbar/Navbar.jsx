@@ -12,7 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import logoImage from "../../../public/logo-no-background.png";
-import miniLogoImage from "../../../public/logo-small-no-background.png"
+import miniLogoImage from "../../../public/logo-small-no-background.png";
 import CustomLink from "./navBarItem";
 
 const Navbar = () => {
@@ -22,8 +22,8 @@ const Navbar = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const navLinksContainerRef = useRef()
-  const searchContainerRef = useRef()
+  const navLinksContainerRef = useRef();
+  const searchContainerRef = useRef();
 
   const searchBlogs = (searchTerm) => {
     const filteredBlogs = blogData.filter((blog) => {
@@ -53,23 +53,24 @@ const Navbar = () => {
         navLinksContainerRef.current &&
         !navLinksContainerRef.current.contains(event.target)
       ) {
-        setShowLinks(false)
+        setShowLinks(false);
       }
 
       if (
         searchContainerRef.current &&
         !searchContainerRef.current.contains(event.target)
       ) {
-        setShowSearchInput(false)
+        setShowSearchInput(false);
       }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside);
+    };
+    if (typeof document !== "undefined")
+      document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-  }, [])
+      if (typeof document !== "undefined")
+        document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -121,9 +122,9 @@ const Navbar = () => {
   };
 
   const handleClick = () => {
-    setShowLinks(false)
-    setShowSearchInput(false)
-  }
+    setShowLinks(false);
+    setShowSearchInput(false);
+  };
 
   return (
     <>
@@ -136,8 +137,7 @@ const Navbar = () => {
                   className={!isMinimized ? styles.logo : styles.miniLogo}
                   src={isMinimized ? miniLogoImage : logoImage}
                   alt="logo"
-                  priority = {true}
-                  
+                  priority={true}
                 />
               </Link>
             </div>
@@ -188,7 +188,6 @@ const Navbar = () => {
                     </button>
                   )}
                 </div>
-
               </div>
             ) : (
               <>
@@ -200,7 +199,7 @@ const Navbar = () => {
                     value={searchTerm}
                     onChange={handleSearch}
                   />
-                  
+
                   <div className={styles.auth_btns_container}>
                     {isLoggedIn ? (
                       <button
@@ -218,26 +217,46 @@ const Navbar = () => {
                       </button>
                     )}
                   </div>
-
-                  
                 </div>
               </>
             )}
           </div>
           {isMinimized && showLinks && (
-            <div className={styles.nav_links_container_toggle} ref={navLinksContainerRef}>
-            <CustomLink onClick={handleClick} text="HOME" href="/" />
-            <CustomLink onClick={handleClick} text="ABOUT US" href="/about-us" />
-            <CustomLink onClick={handleClick} text="PRODUCTS" href="/products" />
-            <CustomLink onClick={handleClick} text="BLOG" href="/blog" />
-            <CustomLink onClick={handleClick} text="CONTACT" href="/contact" />
-            {isLoggedIn && (
-              <CustomLink onClick={handleClick} text="ADD BLOG" href="/blog/newBlog" />
-            )}
+            <div
+              className={styles.nav_links_container_toggle}
+              ref={navLinksContainerRef}
+            >
+              <CustomLink onClick={handleClick} text="HOME" href="/" />
+              <CustomLink
+                onClick={handleClick}
+                text="ABOUT US"
+                href="/about-us"
+              />
+              <CustomLink
+                onClick={handleClick}
+                text="PRODUCTS"
+                href="/products"
+              />
+              <CustomLink onClick={handleClick} text="BLOG" href="/blog" />
+              <CustomLink
+                onClick={handleClick}
+                text="CONTACT"
+                href="/contact"
+              />
+              {isLoggedIn && (
+                <CustomLink
+                  onClick={handleClick}
+                  text="ADD BLOG"
+                  href="/blog/newBlog"
+                />
+              )}
             </div>
           )}
           {isMinimized && showSearchInput && (
-            <div className={styles.search_container_toggle} ref={searchContainerRef}>
+            <div
+              className={styles.search_container_toggle}
+              ref={searchContainerRef}
+            >
               <input
                 type="text"
                 placeholder="Search..."
@@ -263,7 +282,7 @@ const Navbar = () => {
             <div className={styles.search_results}>
               <ul>
                 {searchResults.map((blog) => (
-                  <Link to={`/blog/${blog.id}`}>
+                  <Link key={blog.id} to={`/blog/${blog.id}`}>
                     <li key={blog.id}>{blog.title}</li>
                   </Link>
                 ))}
