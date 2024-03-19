@@ -17,7 +17,7 @@ export const blogDataMapSlider = (a) => {
     <>
       {blogData.map((blog, index) => (
         <SwiperSlide key={index + a + 1}>
-          {console.log(index + a)}
+         
           <div className="slide-content">
             <Link href={`/blog/${blog.id}`}>
               <Image
