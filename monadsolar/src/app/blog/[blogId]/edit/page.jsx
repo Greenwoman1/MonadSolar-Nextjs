@@ -6,7 +6,9 @@ import Editor from "@/components/Editor/Editor";
 import styles from "./account.module.css";
 import EditorPreview from "@/components/EditorPreview/page";
 
-const Account = ({params}) => {
+import { saveEditedBlog } from "../../../utility";
+
+const Account = ({ params }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -18,9 +20,9 @@ const Account = ({params}) => {
     description: "",
   });
 
-  const editId = parseInt(params.blogId);
+  const editId = params.blogId;
 
-  console.log(editId)
+  console.log(editId);
   const fetchData = async () => {
     try {
       const response = await fetch(`http://localhost:3001/blogs/${editId}`, {
@@ -35,8 +37,7 @@ const Account = ({params}) => {
   };
 
   useEffect(() => {
-
-    console.log(params)
+    console.log(params);
     fetchData();
   }, []);
 
@@ -60,36 +61,11 @@ const Account = ({params}) => {
       reader.readAsDataURL(file);
     }
   };
-  const saveBlog = async () => {
-    try {
-      const requestOptions = {
-        method: "PATCH",
-        
 
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          title: blogData.title,
-          description: descriptionValue,
-        }),
-      };
-
-      const response = await fetch(
-        `http://localhost:3001/blogs/${editId}`,
-        requestOptions,
-        
-
-      );
-
-      if (response.ok) {
-        router.push(`/blog/${editId}`);
-      } else {
-        console.error("Failed to update blog");
-      }
-    } catch (error) {
-      console.error("Error updating blog:", error);
-    }
+  const save = () => {
+    saveEditedBlog(editId, blogData.title, descriptionValue);
+    router.push(`/blog/${editId}`);
   };
-
   return (
     <div className="layout">
       <div className="middle">
@@ -111,7 +87,7 @@ const Account = ({params}) => {
             <Editor
               value={descriptionValue}
               setValue={setDescriptionValue}
-              saveBlog={saveBlog}
+              saveBlog={save}
             />
           </div>
           <EditorPreview value={descriptionValue} />

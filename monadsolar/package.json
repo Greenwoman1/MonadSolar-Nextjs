@@ -23,6 +23,7 @@
     "react-quill": "^2.0.0",
     "react-scroll-parallax": "^3.4.5",
     "react-spinners": "^0.13.8",
+    "sharp": "^0.33.2",
     "swiper": "^11.0.7",
     "uuid": "^9.0.1"
   },

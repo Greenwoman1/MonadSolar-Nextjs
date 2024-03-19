@@ -98,6 +98,10 @@
     grid-template-columns: 1fr;
   }
 
+  .image {
+    height: auto;
+  }
+
   .o_nama_main p {
     padding: 15px;
     width: auto;
@@ -130,8 +134,14 @@
     text-align: center;
   }
 
+  .textOverlay li {
+    padding: 20px;
+  }
+  
+
   .centeredText h1 {
     font-size: 1.2rem;
+    padding: 20px;
   }
 
   .textOverlay h1 {
@@ -147,7 +157,8 @@
   }
 
   .image {
-    height: 200px;
+    height: 300px;
+    margin-bottom: 20px;
   
   }
   .overlay {

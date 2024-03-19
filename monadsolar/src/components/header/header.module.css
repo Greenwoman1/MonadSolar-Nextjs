@@ -52,3 +52,13 @@
 .banner_button:hover {
   transform: translateY(-5px);
 }
+
+
+
+
+@media (max-width: 650px) {
+  .banner_text {
+    font-size: 20px;
+  }
+ }
+ 

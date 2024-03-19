@@ -5,7 +5,8 @@ import { useRouter, useSearchParams } from "next/navigation"; // Import useRoute
 import Editor from "@/components/Editor/Editor";
 import styles from "../[blogId]/edit/account.module.css";
 import EditorPreview from "@/components/EditorPreview/page";
-
+import { saveBlog } from "@/app/utility";
+import { revalidateTag } from "next/cache";
 const Account = ({params}) => {
   const router = useRouter();
 
@@ -41,33 +42,14 @@ const Account = ({params}) => {
     }
   };
 
+ const save = async ( ) => {
 
-  
-  const saveBlog = async () => {
-    try {
-        const response = await fetch( `http://localhost:3001/blogs/`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            title: blogData.title,
-            description: descriptionValue,
-            image: "", 
-          }),
-        });
-  
-        if (response.ok) {
-          const { id } = await response.json();
-          router.push(`/blog/${id}`);
-        } else {
-          console.error('Failed to save blog');
-        }
-      } catch (error) {
-        console.error('Error saving blog:', error);
-      }
-  };
 
+const res = await saveBlog(blogData.title, descriptionValue, '')
+router.push(`/blog/${res}`);
+
+console.log(res)
+ }
   return (
     <div className="layout">
       <div className="middle">
@@ -90,7 +72,7 @@ const Account = ({params}) => {
             <Editor
               value={descriptionValue}
               setValue={setDescriptionValue}
-              saveBlog={saveBlog}
+              saveBlog={save}
             />
           </div>
           <EditorPreview value={descriptionValue} />
