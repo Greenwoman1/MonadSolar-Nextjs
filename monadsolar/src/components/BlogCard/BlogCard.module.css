@@ -1,5 +1,6 @@
 .blog_card_container {
-  max-width: 400px;
+  max-width: 800px;
+  min-width: 200px;
   border-radius: 10px;
   background-color: white;
   height: fit-content;
