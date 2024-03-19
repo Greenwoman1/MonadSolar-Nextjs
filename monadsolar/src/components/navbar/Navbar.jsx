@@ -171,33 +171,7 @@ const Navbar = () => {
                   <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
 
-                {isLoggedIn ? (
-                  <button
-                    className={styles.minimized_icon_btn}
-                    onClick={handleLogoutClick}
-                  >
-                    <FontAwesomeIcon icon={faSignOutAlt} />
-                  </button>
-                ) : (
-                  <button
-                    className={styles.minimized_icon_btn}
-                    onClick={handleLoginClick}
-                  >
-                    <FontAwesomeIcon icon={faSignInAlt} />
-                  </button>
-                )}
-              </div>
-            ) : (
-              <>
-                <div className={styles.search_container}>
-                  <input
-                    type="text"
-                    placeholder="Search..."
-                    className={styles.search_input}
-                    value={searchTerm}
-                    onChange={handleSearch}
-                  />
-
+                <div className={styles.auth_btns_container}>
                   {isLoggedIn ? (
                     <button
                       className={styles.minimized_icon_btn}
@@ -213,6 +187,39 @@ const Navbar = () => {
                       <FontAwesomeIcon icon={faSignInAlt} />
                     </button>
                   )}
+                </div>
+
+              </div>
+            ) : (
+              <>
+                <div className={styles.search_container}>
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    className={styles.search_input}
+                    value={searchTerm}
+                    onChange={handleSearch}
+                  />
+                  
+                  <div className={styles.auth_btns_container}>
+                    {isLoggedIn ? (
+                      <button
+                        className={styles.minimized_icon_btn}
+                        onClick={handleLogoutClick}
+                      >
+                        <FontAwesomeIcon icon={faSignOutAlt} />
+                      </button>
+                    ) : (
+                      <button
+                        className={styles.minimized_icon_btn}
+                        onClick={handleLoginClick}
+                      >
+                        <FontAwesomeIcon icon={faSignInAlt} />
+                      </button>
+                    )}
+                  </div>
+
+                  
                 </div>
               </>
             )}
