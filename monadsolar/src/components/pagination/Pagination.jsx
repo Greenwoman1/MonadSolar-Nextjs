@@ -32,7 +32,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       setCurrentPageFromUrl(page);
       console.log(currentPageFromUrl)
     }
-  }, [window.location.search]);
+  }, []);
 
   const renderPageButtons = () => {
     const visiblePageNumbers = [];
