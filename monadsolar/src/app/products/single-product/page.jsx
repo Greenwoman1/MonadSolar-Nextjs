@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../Products.module.css"
+import styles from "./single.module.css"
 import Image from "next/image";
 import reliable from "/public/reliable.png"
 import pimg from "/public/p.png"

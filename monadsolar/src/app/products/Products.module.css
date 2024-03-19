@@ -2,94 +2,75 @@
   height: calc(100vh - 79.5px);
   display: flex;
   flex-direction: column;
+  max-width: 100%;
 }
 
-.products_main {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  max-width: 100%;
+.columntext {
+  background-color: black;
+  color: white;
+  padding: 40px;
+}
 
-  padding: 4rem;
-  height: auto;
+.button {
+text-decoration: none;
+color: white;
+padding: 10px;
+border: 1px solid white;
+border-radius: 5px;
+}
+
+
+
+.products_main {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  padding: 5px; 
+  max-width: 100%;
+  flex-wrap: wrap;
 }
 
 .listed {
   display: flex;
-  align-items: center;
- 
+  align-items: flex-start; 
+  margin-bottom: 20px; 
 }
 
 .listed img {
-  padding: 10px;
+  width: 100px; 
+  height: auto;
+  margin-right: 20px; 
 }
 
 .listed p {
-  padding: 10px;
+  max-width: 250px; 
 }
 
-.button {
-  background-color: white; 
-  color: black; 
-  border: 2px solid white; 
-  padding: 10px 20px;
-  font-size: 16px; 
-  margin-top: 10px;
-  text-decoration: none;
-  border-radius: 5px;
-  cursor: pointer; 
-}
-
-.image {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.border {
-  width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  border-bottom: 1px solid #439e77;;
-}
-
-.text {
-  color: white;
-  background-color: black;
-  text-align: left;
-
-  padding: 50px;
-}
-
-.text p {
-  max-width: 400px;
-  padding: 10px;
-}
-
-.text h1 {
-  padding: 10px;
-}
-
-.columntext {
-  display: flex;
-  align-items: center;
-  justify-content: start;
-}
-
-.column {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
-
-@media screen and (max-width: 480px) {
+@media screen and (min-width: 481px) {
   .products_main {
     display: grid;
-    grid-template-rows: 1fr 1fr;
-    max-width: 100%;
+    grid-template-columns: 1fr 1fr; 
+    padding: 4rem;
   
-    padding: 1rem;
-    height: auto;
   }
-  
+}
+
+@media screen and (max-width: 480px) {
+  .listed img {
+    width: 100px; 
+  }
+
+  .products_main img {
+    max-width: 420px;
+    height: 270px;
+  }
+
+  .listed p {
+    max-width: 200px; 
+  }
+
+  .columntext {
+   margin: 5px;
+
+  }
 }
