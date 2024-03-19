@@ -16,10 +16,11 @@ export const blogDataMapSlider = (a) => {
   return (
     <>
       { blogData.map((blog, index) => (
-        <SwiperSlide key={ blog.id }>
+        <SwiperSlide key={ index +a +1}>
+          {console.log( index +a )}
           <div className="slide-content">
             <Link href={`/blog/${blog.id}`}>
-              <Image src="/blog1.jpg" width={400} height={200} alt="Nature" />
+              <Image src="/blog1.jpg" width={400} height={200} style={{height: 'auto'}} alt="Nature" />{" "}
             </Link>
 
             <div className="slide-title">
@@ -84,8 +85,8 @@ const SwiperComponent = () => {
           className="mySwiper"
         >
           <Suspense>
-            {blogDataMapSlider(1)}
-            {blogData.length <= 3 && blogDataMapSlider(2)}
+            {blogDataMapSlider(0)}
+            {blogData.length <= 3 && blogDataMapSlider(blogData.length)}
           </Suspense>
         </Swiper>
       </section>
