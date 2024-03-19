@@ -53,6 +53,7 @@
   
   .contact form label {
     display: block;
+  
   }
   
   .contact form p {
@@ -150,7 +151,7 @@
     
       .contact form input,
       .contact form textarea {
-        width: 80%;
+        width: 100%;
         max-width: 300px; /* Prilagodi maksimalnu širinu inputa i textarea */
         margin-bottom: 10px;
       }
@@ -161,6 +162,11 @@
     
       .btn_submit button {
         width: 100%;
+      }
+
+      .contact form label {
+        display: block;
+      text-align: center;
       }
     }
     
