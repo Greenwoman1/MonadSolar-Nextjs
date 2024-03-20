@@ -1,9 +1,10 @@
 import styles from "./AboutUs.module.css";
-import Header from "@/components/header/page";
+
 import aboutContent from "./aboutContent.json";
 import history from "/public/history.jpg";
 import enviroment from "/public/enviroment.jpg";
 import AddParallax from "./AddParallax";
+import HeroSegment from "@/components/HeroSegment/page";
 
 export const metadata = {
   title: "About us",
@@ -28,7 +29,13 @@ const AboutUs = () => {
   return (
     <>
       <div className={styles.container}>
-        <Header src={"./about-us-cover.jpg"} title={"About us"} />
+        <div className="banner_image">
+          <HeroSegment src="./about-us-cover.jpg">
+            <div className="banner_text">
+              <h1>About Us</h1>
+            </div>
+          </HeroSegment>
+        </div>
       </div>
       <div className="layout">
         <div className="middle">
