@@ -14,7 +14,7 @@ const Editor = ({ title, image, value, setValue, saveBlog }) => {
     []
   );
 
-  /*   const imageHandler = useCallback(() => {
+    const imageHandler = useCallback(() => {
     if (typeof document === "undefined") return;
     const input = document.createElement("input");
     input.setAttribute("type", "file");
@@ -35,7 +35,7 @@ const Editor = ({ title, image, value, setValue, saveBlog }) => {
 
       reader.readAsDataURL(file);
     };
-  }, []); */
+  }, []);
 
   const modules = useMemo(
     () => ({
@@ -53,16 +53,16 @@ const Editor = ({ title, image, value, setValue, saveBlog }) => {
           ["link", "image"],
           ["clean"],
         ],
-        // handlers: {
-        //   // image: imageHandler,
-        // },
+        handlers: {
+          image: imageHandler,
+        },
       },
       clipboard: {
         matchVisual: true,
       },
     }),
     [
-      /* imageHandler */
+       imageHandler 
     ]
   );
 

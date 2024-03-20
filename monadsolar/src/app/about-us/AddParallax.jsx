@@ -13,8 +13,10 @@ const AddParallax = ({ image }) => {
     };
 
     hideMobile();
-    window.addEventListener("hideMobile", hideMobile);
-    return () => window.removeEventListener("hideMobile", hideMobile);
+
+    window.addEventListener("resize", hideMobile);
+
+    return () => window.removeEventListener("resize", hideMobile);
   }, []);
 
   if (isMobile) {

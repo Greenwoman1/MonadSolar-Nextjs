@@ -2,6 +2,8 @@ import { Suspense } from "react";
 import styles from "./Blog.module.css";
 import BlogCard from "@/components/BlogCard/BlogCard";
 
+export const Loader = () => <div>Loading blogs</div>;
+
 const Blogs = async ({ page }) => {
   const data = await fetch(
     `http://localhost:3001/blogs?page=${page}`,
@@ -17,14 +19,14 @@ const Blogs = async ({ page }) => {
     <div className={styles.blog_cards_wrapper}>
       <div className={styles.blog_cards_grid}>
         {data.map((card, index) => (
-            <BlogCard
-              key={index}
-              id={card.id}
-              image={card.image}
-              title={card.title}
-              description={card.description}
-              date={card.date}
-            />
+          <BlogCard
+            key={index}
+            id={card.id}
+            image={card.image}
+            title={card.title}
+            description={card.description}
+            date={card.date}
+          />
         ))}
       </div>
     </div>

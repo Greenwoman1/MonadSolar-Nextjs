@@ -1,7 +1,6 @@
-import Blogs from "./Blogs";
+import Blogs, { Loader } from "./Blogs";
 import Pagination from "./Pagination";
 import { Suspense } from "react";
-import Loading from "../loader";
 
 export const metadata = {
   title: {
@@ -13,16 +12,13 @@ export const metadata = {
 };
 
 const Blog = ({ searchParams }) => {
-
-  
   const page = parseInt(searchParams?.page || 1);
-
 
   return (
     <>
       <div className="layout">
         <div className="middle">
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<Loader />}>
             <Blogs page={page} />
 
             <Pagination page={page} />

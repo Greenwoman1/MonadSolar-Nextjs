@@ -5,13 +5,15 @@ import "./globals.css";
 import ServiceOffer from "@/components/service-offer/service-offer";
 import { Suspense } from "react";
 import HeroSegment from "../components/HeroSegment/page";
+import img from '/public/header-cover.jpg'
+
 const Home = () => {
   return (
     <div className="layout">
       <div className="firstRow-all-columns">
         <div className={styles.container}>
           <div className="banner_image">
-            <HeroSegment src="./header-cover.jpg">
+            <HeroSegment src={img}>
               <div className="banner_text">
                 <h1>
                   <span style={{ color: "yellow" }}>M</span>onad

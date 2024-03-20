@@ -6,6 +6,8 @@ import enviroment from "/public/enviroment.jpg";
 import AddParallax from "./AddParallax";
 import HeroSegment from "@/components/HeroSegment/page";
 
+import img from '/public/about-us-cover.jpg'
+
 export const metadata = {
   title: "About us",
   description: "Our history",
@@ -30,7 +32,7 @@ const AboutUs = () => {
     <>
       <div className={styles.container}>
         <div className="banner_image">
-          <HeroSegment src="./about-us-cover.jpg">
+          <HeroSegment src={img}>
             <div className="banner_text">
               <h1>About Us</h1>
             </div>

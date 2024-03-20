@@ -8,6 +8,8 @@ import prod23 from "/public/prod23.png";
 import proud33 from "/public/proud33.png";
 import HeroSegment from "@/components/HeroSegment/page";
 
+import img from "/public/products.jpg";
+
 export const metadata = {
   title: "Products",
   description: "Solar panels",
@@ -18,7 +20,7 @@ const Products = () => {
     <>
       <div className={styles.container}>
         <div className="banner_image">
-          <HeroSegment src="./products.jpg">
+          <HeroSegment src={img}>
             <div className="banner_text">
               <h1>Products</h1>
             </div>

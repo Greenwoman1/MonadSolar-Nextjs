@@ -35,8 +35,6 @@ const Navbar = () => {
     setSearchResults(filteredBlogs);
   };
 
-
-
   const handleSearch = (e) => {
     const term = e.target.value;
     if (term == "") {
@@ -48,37 +46,45 @@ const Navbar = () => {
       searchBlogs(term);
     }
   };
-/* 
+
   useEffect(() => {
     const handleClickOutside = (event) => {
+
+      if (event.target.closest(`.${styles.minimized_icon_btn}`)) return;
+
       if (
         navLinksContainerRef.current &&
-        !navLinksContainerRef.current.contains(event.target)
+        !navLinksContainerRef.current.contains(event.target) &&
+        !showLinks
       ) {
         setShowLinks(false);
       }
 
       if (
         searchContainerRef.current &&
-        !searchContainerRef.current.contains(event.target)
+        !searchContainerRef.current.contains(event.target) &&
+        !showSearchInput
       ) {
         setShowSearchInput(false);
       }
     };
+
     if (typeof document !== "undefined")
-      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("click", handleClickOutside);
 
     return () => {
       if (typeof document !== "undefined")
-        document.removeEventListener("mousedown", handleClickOutside);
+        document.removeEventListener("click", handleClickOutside);
     };
-  }, []); */
+  }, []);
 
   useEffect(() => {
+
     const handleResize = () => {
       const isScreenMinimized = window.innerWidth <= 1400;
       setIsMinimized(isScreenMinimized);
       setShowSearchInput(false);
+
       setShowLinks(false);
     };
 
@@ -93,7 +99,10 @@ const Navbar = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    setIsLoggedIn(user == "user");
+  }, []);
 
   const handleMagnifierClick = () => {
     setShowSearchInput(!showSearchInput);
@@ -101,20 +110,35 @@ const Navbar = () => {
   };
 
   const handleBarsClick = () => {
+
+    {
+      /*setShowLinks(prevShowLinks => {
+      console.log("Before state update:", prevShowLinks);
+      const newValue = !prevShowLinks;
+      console.log("After state update:", newValue);
+      return newValue;
+    });*/
+    }
     setShowLinks(!showLinks);
     setShowSearchInput(false);
   };
+
+  useEffect(() => {
+    console.log("Updated showLinks:", showLinks);
+  }, [showLinks]);
 
   const handleLoginClick = () => {
     setShowLoginModal(true);
   };
 
   const handleLoginSubmit = () => {
+    localStorage.setItem("user", "user");
     setShowLoginModal(false);
     setIsLoggedIn(true);
   };
 
   const handleLogoutClick = () => {
+    localStorage.removeItem("user");
     setIsLoggedIn(false);
   };
 
@@ -153,7 +177,12 @@ const Navbar = () => {
             )}
 
             {isMinimized ? (
-              <div className={styles.menu_search_minimized_container}>
+              <div
+                className={styles.menu_search_minimized_container}
+                onMouseDown={(e) => {
+                  e.stopPropagation();
+                }}
+              >
                 <button
                   className={styles.minimized_icon_btn}
                   onClick={handleBarsClick}
@@ -218,6 +247,7 @@ const Navbar = () => {
               </>
             )}
           </div>
+
           {isMinimized && showLinks && (
             <div
               className={styles.nav_links_container_toggle}
