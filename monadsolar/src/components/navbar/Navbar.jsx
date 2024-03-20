@@ -47,38 +47,7 @@ const Navbar = () => {
     }
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        navLinksContainerRef.current &&
-        !navLinksContainerRef.current.contains(event.target) &&
-        !showLinks
-      ) {
-        setShowLinks(false);
-      }
-
-      if (
-        searchContainerRef.current &&
-        !searchContainerRef.current.contains(event.target) &&
-        !showSearchInput
-      ) {
-        setShowSearchInput(false);
-      }
-    };
-    {/*if (typeof document !== "undefined")
-      document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      if (typeof document !== "undefined")
-        document.removeEventListener("mousedown", handleClickOutside);
-    };*/}
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
+  
   useEffect(() => {
     const handleResize = () => {
       const isScreenMinimized = window.innerWidth <= 1400;
@@ -109,20 +78,9 @@ const Navbar = () => {
   };
 
   const handleBarsClick = () => {
-    {/*setShowLinks(prevShowLinks => {
-      console.log("Before state update:", prevShowLinks);
-      const newValue = !prevShowLinks;
-      console.log("After state update:", newValue);
-      return newValue;
-    });*/}
     setShowLinks(!showLinks)
     setShowSearchInput(false);
   };
-
-  useEffect(() => {
-    console.log("Updated showLinks:", showLinks);
-  }, [showLinks]);
-  
 
   const handleLoginClick = () => {
     setShowLoginModal(true);
@@ -243,7 +201,6 @@ const Navbar = () => {
           {isMinimized && showLinks && (
             <div
               className={styles.nav_links_container_toggle}
-              ref={navLinksContainerRef}
             >
               <CustomLink onClick={handleClick} text="HOME" href="/" />
               <CustomLink
@@ -274,7 +231,6 @@ const Navbar = () => {
           {isMinimized && showSearchInput && (
             <div
               className={styles.search_container_toggle}
-              ref={searchContainerRef}
             >
               <input
                 type="text"
