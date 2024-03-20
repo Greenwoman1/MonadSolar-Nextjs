@@ -25,14 +25,14 @@ var blogData = [
     title:
       "3 Canadian Solar Partners wivdth Sol Systems to Ramp Up U.S. Module Manufacturing",
     description:
-      "3 Lorem ipsum dolor sit, amet cosnsectetur adipisicing elit. Fuga blanditiis, quia soluta inventore nam, corrupti eveniet obcaecati harum sunt iure incidunt ducimus veritatis reprehenderit. Atque nobis perspiciatis eaque porro eos!",
+      "3 Lorem ipsum dolor sit, amet cosnsectetasdaur adipisicing elit. Fuga blanditiis, quia soluta inventore nam, corrupti eveniet obcaecati harum sunt iure incidunt ducimus veritatis reprehenderit. Atque nobis perspiciatis eaque porro eos!",
     date: "13 December 2023",
   },
   {
     id: 3,
     image: `http://localhost:${port}/public/blog1.jpg`,
     title:
-      "4 Canadian Solar Partners with Sol Systemsdcc to Ramp Up U.S. Module Manufacturing",
+      "4 Canadian Solar Partnerwes with Sol Systemsdcc to Ramp Up U.S. Module Manufacturing",
     description:
       "4 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga blanditiis, quia soluta inventore nam, corrupti eveniet obcaecati harum sunt iure incidunt ducimus veritatis reprehenderit. Atque nobis perspiciatis eaque porro eos!",
     date: "14 December 2023",

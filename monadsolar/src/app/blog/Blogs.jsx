@@ -8,7 +8,7 @@ const Blogs = async ({ page }) => {
     {
       cache: "no-store",
     },
-    { next: { tags: ["delete-blog"] } }
+    { next: { tags: ["delete-blog", "edit-id", "new-blog-id"] } }
   )
     .then((response) => response.json())
     .then(({ data }) => data);
