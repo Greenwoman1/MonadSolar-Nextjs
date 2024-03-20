@@ -62,8 +62,8 @@ const Account = ({ params }) => {
     }
   };
 
-  const save = () => {
-    saveEditedBlog(editId, blogData.title, descriptionValue);
+  const save = async () => {
+    await saveEditedBlog(editId, blogData.title, descriptionValue);
     router.push(`/blog/${editId}`);
   };
   return (

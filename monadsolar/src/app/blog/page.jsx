@@ -13,7 +13,10 @@ export const metadata = {
 };
 
 const Blog = ({ searchParams }) => {
+
+  
   const page = parseInt(searchParams?.page || 1);
+
 
   return (
     <>

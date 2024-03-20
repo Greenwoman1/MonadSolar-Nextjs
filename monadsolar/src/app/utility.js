@@ -30,45 +30,39 @@ export const saveEditedBlog = async (id, title, descriptionValue) => {
 
 export const deleteBlog = async (id) => {
   try {
-    console.log(id, 'dosao u id')
-    const res = await fetch(`http://localhost:3001/blogs/${id}`, {
+    console.log(id, "dosao u id");
+    await fetch(`http://localhost:3001/blogs/${id}`, {
       method: "DELETE",
-    }); 
-    // revalidateTag('delete-blog')
-    // revalidatePath('/blog')
-    revalidatePath('/blogs')
+      cache: 'no-cache'
+    });
 
-    return res.message
   } catch (error) {
     console.log(error);
   }
 };
 
-
-
-
 export const saveBlog = async (title, desc, image) => {
   try {
-      const response = await fetch( `http://localhost:3001/blogs/`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          title: title,
-          description: desc,
-          image: "", 
-        }),
-      });
-      revalidateTag(['add-blog'])
+    const response = await fetch(`http://localhost:3001/blogs/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: title,
+        description: desc,
+        image: "",
+      }),
+    });
+    revalidateTag(["add-blog"]);
 
-      if (response.ok) {
-        const { id } = await response.json();
-        return id ;
-      } else {
-        console.error('Failed to save blog');
-      }
-    } catch (error) {
-      console.error('Error saving blog:', error);
+    if (response.ok) {
+      const { id } = await response.json();
+      return id;
+    } else {
+      console.error("Failed to save blog");
     }
+  } catch (error) {
+    console.error("Error saving blog:", error);
+  }
 };

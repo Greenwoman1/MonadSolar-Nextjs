@@ -35,6 +35,8 @@ const Navbar = () => {
     setSearchResults(filteredBlogs);
   };
 
+
+
   const handleSearch = (e) => {
     const term = e.target.value;
     if (term == "") {
@@ -46,7 +48,7 @@ const Navbar = () => {
       searchBlogs(term);
     }
   };
-
+/* 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -70,7 +72,7 @@ const Navbar = () => {
       if (typeof document !== "undefined")
         document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, []); */
 
   useEffect(() => {
     const handleResize = () => {
@@ -91,10 +93,7 @@ const Navbar = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(() => {
-    const user = localStorage.getItem("user");
-    setIsLoggedIn(user == "user");
-  }, []);
+
 
   const handleMagnifierClick = () => {
     setShowSearchInput(!showSearchInput);
@@ -111,13 +110,11 @@ const Navbar = () => {
   };
 
   const handleLoginSubmit = () => {
-    localStorage.setItem("user", "user");
     setShowLoginModal(false);
     setIsLoggedIn(true);
   };
 
   const handleLogoutClick = () => {
-    localStorage.removeItem("user");
     setIsLoggedIn(false);
   };
 
