@@ -54,7 +54,7 @@ export const saveBlog = async (title, desc, image) => {
         image: "",
       }),
     });
-    revalidateTag(["add-blog-id"]);
+    revalidateTag("add-blog-id");
 
     if (response.ok) {
       const { id } = await response.json();

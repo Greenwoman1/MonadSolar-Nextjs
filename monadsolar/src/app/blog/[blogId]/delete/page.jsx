@@ -15,6 +15,7 @@ const DeleteBlog = async ({ params, searchParams }) => {
       await deleteBlog(searchParams.id);
       revalidatePath("/blog");
       revalidateTag('delete-blog')
+
       redirect("/blog");
     };
 
