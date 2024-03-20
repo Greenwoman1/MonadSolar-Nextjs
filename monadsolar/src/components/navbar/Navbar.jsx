@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Navbar.module.css";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -22,8 +22,6 @@ const Navbar = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const navLinksContainerRef = useRef();
-  const searchContainerRef = useRef();
 
   const searchBlogs = (searchTerm) => {
     const filteredBlogs = blogData.filter((blog) => {
