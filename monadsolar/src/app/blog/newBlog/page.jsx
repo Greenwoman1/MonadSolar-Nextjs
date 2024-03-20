@@ -26,6 +26,8 @@ const Account = ({params}) => {
   useEffect(() => {
     setDescriptionValue(blogData.description);
   }, [blogData.description]);
+
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setBlogData({ ...blogData, [name]: value });
@@ -48,12 +50,11 @@ const Account = ({params}) => {
 const res = await saveBlog(blogData.title, descriptionValue, '')
 router.push(`/blog/${res}`);
 
-console.log(res)
  }
   return (
     <div className="layout">
       <div className="middle">
-        <h2>{"Edit Blog"}:</h2>
+        <h2>{"New Blog"}:</h2>
         <div className={styles.container}>
           <div className={styles.form_container}>
             <div className={styles.form_input}>

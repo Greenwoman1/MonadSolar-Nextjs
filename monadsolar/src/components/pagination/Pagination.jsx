@@ -21,7 +21,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   // };
 
   const [currentPageFromUrl, setCurrentPageFromUrl] = useState(1);
-
+/* 
   useEffect(() => {
     // Check if window is defined (client-side rendering)
     if (typeof window !== "undefined") {
@@ -31,7 +31,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       setCurrentPageFromUrl(page);
       console.log(currentPageFromUrl);
     }
-  }, []);
+  }, []); */
 
   const renderPageButtons = () => {
     const visiblePageNumbers = [];
