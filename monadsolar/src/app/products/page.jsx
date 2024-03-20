@@ -1,11 +1,12 @@
 import React from "react";
 import styles from "./Products.module.css";
 import Link from "next/link";
-import Header from "@/components/header/page";
+
 import Image from "next/image";
 import product2 from "/public/product2.png";
 import prod23 from "/public/prod23.png";
 import proud33 from "/public/proud33.png";
+import HeroSegment from "@/components/HeroSegment/page";
 
 export const metadata = {
   title: "Products",
@@ -16,7 +17,13 @@ const Products = () => {
   return (
     <>
       <div className={styles.container}>
-        <Header src="./products.jpg" title={"Products"} />
+        <div className="banner_image">
+          <HeroSegment src="./products.jpg">
+            <div className="banner_text">
+              <h1>Products</h1>
+            </div>
+          </HeroSegment>
+        </div>
       </div>
       <div className="layout">
         <div className="middle">

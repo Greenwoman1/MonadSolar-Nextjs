@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./contact.module.css"
-import Header from "@/components/header/page";
+
 import ContactForm from "@/components/contactForm/page";
+import HeroSegment from "@/components/HeroSegment/page";
 
 
 export const metadata = {
@@ -23,7 +24,14 @@ const Contact = () => {
     <div className="layout">
       <div className="firstRow-all-columns">
         <div className={styles.container}>
-          <Header src={"./kontakt.jpg"} title={"Contact Us"} />
+          <div className="banner_image">
+          <HeroSegment src={"./kontakt.jpg"} >
+            <div className="banner_text">
+             <h1>Contact</h1>
+            </div>
+            </HeroSegment>
+          </div>
+         
         </div>
       </div>
       <div className="middle">
