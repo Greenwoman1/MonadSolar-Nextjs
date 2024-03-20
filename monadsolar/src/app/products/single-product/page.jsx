@@ -10,7 +10,7 @@ const SingleProduct = () => {
       <div className="middle">
         <div className={styles.products_main}>
           <div className={styles.column}>
-            <Image src="/prod4.png" width={600} height={500} className={styles.image} />
+            <Image src="/prod4.png" width={600} alt="alt" height={500} className={styles.image} />
           </div>
 
           <div className={styles.columntext}>
