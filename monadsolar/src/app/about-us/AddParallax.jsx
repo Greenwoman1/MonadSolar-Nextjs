@@ -24,7 +24,7 @@ const AddParallax = ({ image }) => {
   return (
     <div>
       <ParallaxProvider>
-        <Parallax speed={-7}>
+        <Parallax speed={-5}>
           <Image src={image} alt="Parallax Image" className={styles.image} />
         </Parallax>
       </ParallaxProvider>
