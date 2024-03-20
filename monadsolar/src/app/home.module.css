@@ -21,6 +21,7 @@
     top: 0;
     left: 0;
     width: 100%;
+    min-height: 300px;
     height: auto;
     background-color: rgb(255, 255, 255); 
     display: flex;
