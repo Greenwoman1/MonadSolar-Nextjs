@@ -1,16 +1,20 @@
 "use client";
 
 import { useCallback, useMemo, useRef } from "react";
+import {} from "react";
+import dynamic from "next/dynamic";
 
-import QuillEditor from "react-quill";
 import "./editor.css";
 import "react-quill/dist/quill.snow.css";
 import styles from "./Editor.module.css";
 
 const Editor = ({ title, image, value, setValue, saveBlog }) => {
-  const quill = useRef();
+  const ReactQuill = useMemo(
+    () => dynamic(() => import("react-quill"), { ssr: false }),
+    []
+  );
 
-  const imageHandler = useCallback(() => {
+  /*   const imageHandler = useCallback(() => {
     if (typeof document === "undefined") return;
     const input = document.createElement("input");
     input.setAttribute("type", "file");
@@ -31,7 +35,7 @@ const Editor = ({ title, image, value, setValue, saveBlog }) => {
 
       reader.readAsDataURL(file);
     };
-  }, []);
+  }, []); */
 
   const modules = useMemo(
     () => ({
@@ -49,15 +53,17 @@ const Editor = ({ title, image, value, setValue, saveBlog }) => {
           ["link", "image"],
           ["clean"],
         ],
-        handlers: {
-          image: imageHandler,
-        },
+        // handlers: {
+        //   // image: imageHandler,
+        // },
       },
       clipboard: {
         matchVisual: true,
       },
     }),
-    [imageHandler]
+    [
+      /* imageHandler */
+    ]
   );
 
   const formats = [
@@ -71,7 +77,7 @@ const Editor = ({ title, image, value, setValue, saveBlog }) => {
     "bullet",
     "indent",
     "link",
-    "image",
+    // "image",
     "color",
     "clean",
   ];
@@ -80,7 +86,16 @@ const Editor = ({ title, image, value, setValue, saveBlog }) => {
     <div className={styles.wrapper}>
       <label className={styles.label}>Editor Content</label>
       <div className={styles.quill_container}>
-        <QuillEditor
+        <ReactQuill
+          className={styles.editor}
+          theme="snow"
+          value={value}
+          formats={formats}
+          modules={modules}
+          onChange={setValue}
+        />
+
+        {/*  <QuillEditor
           ref={(el) => (quill.current = el)}
           className={styles.editor}
           theme="snow"
@@ -88,7 +103,7 @@ const Editor = ({ title, image, value, setValue, saveBlog }) => {
           formats={formats}
           modules={modules}
           onChange={(value) => setValue(value)}
-        />
+        /> */}
       </div>
       <button onClick={saveBlog}>Spremi Blog</button>
     </div>

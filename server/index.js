@@ -11,28 +11,28 @@ app.use(express.json());
 app.use("/public", express.static(__dirname + "/public"));
 var blogData = [
   {
-    id: "1",
+    id: 1,
     image: `http://localhost:${port}/public/blog1.jpg`,
     title:
       "2 Canadian Solar Partners with Sol Systems to Ramp Up U.S. Module Manufacturing",
     description:
-      "2 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga blanditiis, quia soluta inventore nam, corrupti eveniet obcaecati harum sunt iure incidunt ducimus veritatis reprehenderit. Atque nobis perspiciatis eaque porro eos!",
+      "2 Lorem ipsum dolor sit, amet cdsconsectetur adipisicing elit. Fuga blanditiis, quia soluta inventore nam, corrupti eveniet obcaecati harum sunt iure incidunt ducimus veritatis reprehenderit. Atque nobis perspiciatis eaque porro eos!",
     date: "12 December 2023",
   },
   {
-    id: "2",
+    id: 2,
     image: `http://localhost:${port}/public/blog1.jpg`,
     title:
-      "3 Canadian Solar Partners with Sol Systems to Ramp Up U.S. Module Manufacturing",
+      "3 Canadian Solar Partners wivdth Sol Systems to Ramp Up U.S. Module Manufacturing",
     description:
-      "3 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga blanditiis, quia soluta inventore nam, corrupti eveniet obcaecati harum sunt iure incidunt ducimus veritatis reprehenderit. Atque nobis perspiciatis eaque porro eos!",
+      "3 Lorem ipsum dolor sit, amet cosnsectetasdaur adipisicing elit. Fuga blanditiis, quia soluta inventore nam, corrupti eveniet obcaecati harum sunt iure incidunt ducimus veritatis reprehenderit. Atque nobis perspiciatis eaque porro eos!",
     date: "13 December 2023",
   },
   {
-    id: "3",
+    id: 3,
     image: `http://localhost:${port}/public/blog1.jpg`,
     title:
-      "4 Canadian Solar Partners with Sol Systems to Ramp Up U.S. Module Manufacturing",
+      "4 Canadian Solar Partnerwes with Sol Systemsdcc to Ramp Up U.S. Module Manufacturing",
     description:
       "4 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga blanditiis, quia soluta inventore nam, corrupti eveniet obcaecati harum sunt iure incidunt ducimus veritatis reprehenderit. Atque nobis perspiciatis eaque porro eos!",
     date: "14 December 2023",
@@ -126,9 +126,8 @@ app.patch("/blogs/:id", async (req, res) => {
 app.delete("/blogs/:id", async (req, res) => {
     const id = req.params.id;
     console.log("Deleting blog with ID:", id);
-  await delay(2000)
-    // Implement your logic to delete a blog by ID
-    const index = blogData.findIndex(blog => blog.id === id);
+    await delay(2000)
+    const index = await blogData.findIndex(blog => blog.id == id);
     if (index != -1) {
       console.log("uspio")
         blogData = [...blogData.slice(0, index), ...blogData.slice(index + 1)];
