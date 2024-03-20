@@ -19,10 +19,9 @@ const Blog = ({ searchParams }) => {
     <>
       <div className="layout">
         <div className="middle">
-          <Suspense fallback={<div>loading</div>}>
+          <Suspense fallback={<Loading />}>
             <Blogs page={page} />
-          </Suspense>
-          <Suspense fallback={<div>loading </div>}>
+
             <Pagination page={page} />
           </Suspense>
         </div>
