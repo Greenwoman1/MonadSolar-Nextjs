@@ -16,7 +16,7 @@ const SingleProduct = () => {
           <div className={styles.columntext}>
             <ul>
               <li className={styles.listed}>
-                <Image src={reliable} />
+                <Image src={reliable} alt="reliable" />
                 <div>
                   <p>
                     <b>Enhanced reliability</b>
@@ -28,7 +28,7 @@ const SingleProduct = () => {
                 </div>
               </li>
               <li className={styles.listed}>
-                <Image src={pimg} />
+                <Image src={pimg} alt="pimg" />
                 <div>
                   <p>
                     <b>Higher energy yield, lower LCOE</b>
@@ -40,7 +40,7 @@ const SingleProduct = () => {
                 </div>
               </li>
               <li className={styles.listed}>
-                <Image src={moren} />
+                <Image src={moren} alt="moren" />
                 <div>
                   <p>
                     <b>Bifacial module up to 715W</b>

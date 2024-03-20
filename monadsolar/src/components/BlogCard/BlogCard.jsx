@@ -25,7 +25,7 @@ const BlogCard = (props) => {
           objectFit="cover"   // Adjust how the image fits its container
           objectPosition="center"
         />*/}
-        <img className={styles.blog_card_img} src={props.image} alt="" />
+        <img className={styles.blog_card_img} src={props.image} alt="blogimg" />
       </div>
 
       <div className={styles.description_container}>
@@ -36,10 +36,7 @@ const BlogCard = (props) => {
         <Link className={styles.more_btn} href={`/blog/${encodeURIComponent(props.id)}`}>
           MORE <FontAwesomeIcon icon={faAnglesRight} />
         </Link> 
-        {/*<button onClick={handleMoreNavigation} className={styles.more_btn}>
-          {" "}
-          MORE <FontAwesomeIcon icon={faAnglesRight} />
-  </button>*/}
+       
         <p className={styles.date}> {new Date(props.date).toLocaleDateString("en-GB")} </p>
       </div>
     </div>
