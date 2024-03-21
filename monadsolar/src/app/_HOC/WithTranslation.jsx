@@ -15,7 +15,7 @@ export default function WithTranslation(WrappedComponent, page) {
     const changeLanguage = (lang) => {
       setLanguage(lang);
     };
-console.log(language)
+
     const translate = (key) =>  translations[language][key] || key
     return (
       <WrappedComponent
