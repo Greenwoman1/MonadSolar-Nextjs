@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./contact.module.css"
-
+import img from "/public/kontakt.jpg"
 import ContactForm from "@/components/contactForm/page";
 import HeroSegment from "@/components/HeroSegment/page";
 
@@ -25,7 +25,7 @@ const Contact = () => {
       <div className="firstRow-all-columns">
         <div className={styles.container}>
           <div className="banner_image">
-          <HeroSegment src={"./kontakt.jpg"} >
+          <HeroSegment src={img} >
             <div className="banner_text">
              <h1>Contact</h1>
             </div>
