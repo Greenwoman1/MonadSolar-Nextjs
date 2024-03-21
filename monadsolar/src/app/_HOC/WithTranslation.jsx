@@ -9,21 +9,14 @@ const translations = {
   en,
 };
 
-export default function WithTranslation(WrappedComponent, page) {
-  return function (props) {
-    const [language, setLanguage] = useState("en");
-    const changeLanguage = (lang) => {
-      setLanguage(lang);
-    };
+export const withTranslation = (Component) => {
+  return function WrappedComponent(props) {
+    const [lang, setLang] = useState('en');
+    
+    const changeLang = (newLang) => setLang(newLang);
+    
+    const t = (key) => translations[lang][key] || key;
 
-    const translate = (key) =>  translations[language][key] || key
-    return (
-      <WrappedComponent
-        {...props}
-        t={translate}
-        language={language}
-        changeLanguage={changeLanguage}
-      />
-    );
+    return <Component {...props} translate={t} currentLanguage={lang} switchLanguage={changeLang} />;
   };
-}
+};
