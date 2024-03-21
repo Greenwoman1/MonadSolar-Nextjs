@@ -45,9 +45,7 @@ const Navbar = () => {
     }
   };
 
-<<<<<<< HEAD
   
-=======
   useEffect(() => {
     const handleClickOutside = (event) => {
 
@@ -79,7 +77,6 @@ const Navbar = () => {
     };
   }, []);
 
->>>>>>> 34c2e8baa39e19778f69edc7d53cba60960c54f8
   useEffect(() => {
 
     const handleResize = () => {
@@ -112,9 +109,6 @@ const Navbar = () => {
   };
 
   const handleBarsClick = () => {
-<<<<<<< HEAD
-    setShowLinks(!showLinks)
-=======
 
     {
       /*setShowLinks(prevShowLinks => {
@@ -125,7 +119,6 @@ const Navbar = () => {
     });*/
     }
     setShowLinks(!showLinks);
->>>>>>> 34c2e8baa39e19778f69edc7d53cba60960c54f8
     setShowSearchInput(false);
   };
 
@@ -253,11 +246,8 @@ const Navbar = () => {
               </>
             )}
           </div>
-<<<<<<< HEAD
         
-=======
 
->>>>>>> 34c2e8baa39e19778f69edc7d53cba60960c54f8
           {isMinimized && showLinks && (
             <div
               className={styles.nav_links_container_toggle}
