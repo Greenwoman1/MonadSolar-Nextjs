@@ -1,7 +1,7 @@
 
 .uslugeMain {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
   
     gap: 15px;
     width: 100%;
@@ -9,8 +9,11 @@
     padding-top: 50px;
     padding-bottom: 50px;
   }
+
+ 
   
   .card {
+    width: 100%;
     box-shadow: unset !important;
     border: unset !important;
     border-radius: unset !important;

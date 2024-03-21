@@ -45,12 +45,48 @@ const Navbar = () => {
     }
   };
 
+<<<<<<< HEAD
   
+=======
   useEffect(() => {
+    const handleClickOutside = (event) => {
+
+      if (event.target.closest(`.${styles.minimized_icon_btn}`)) return;
+
+      if (
+        navLinksContainerRef.current &&
+        !navLinksContainerRef.current.contains(event.target) &&
+        !showLinks
+      ) {
+        setShowLinks(false);
+      }
+
+      if (
+        searchContainerRef.current &&
+        !searchContainerRef.current.contains(event.target) &&
+        !showSearchInput
+      ) {
+        setShowSearchInput(false);
+      }
+    };
+
+    if (typeof document !== "undefined")
+      document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      if (typeof document !== "undefined")
+        document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
+>>>>>>> 34c2e8baa39e19778f69edc7d53cba60960c54f8
+  useEffect(() => {
+
     const handleResize = () => {
       const isScreenMinimized = window.innerWidth <= 1400;
       setIsMinimized(isScreenMinimized);
       setShowSearchInput(false);
+
       setShowLinks(false);
     };
 
@@ -76,9 +112,26 @@ const Navbar = () => {
   };
 
   const handleBarsClick = () => {
+<<<<<<< HEAD
     setShowLinks(!showLinks)
+=======
+
+    {
+      /*setShowLinks(prevShowLinks => {
+      console.log("Before state update:", prevShowLinks);
+      const newValue = !prevShowLinks;
+      console.log("After state update:", newValue);
+      return newValue;
+    });*/
+    }
+    setShowLinks(!showLinks);
+>>>>>>> 34c2e8baa39e19778f69edc7d53cba60960c54f8
     setShowSearchInput(false);
   };
+
+  useEffect(() => {
+    console.log("Updated showLinks:", showLinks);
+  }, [showLinks]);
 
   const handleLoginClick = () => {
     setShowLoginModal(true);
@@ -130,7 +183,12 @@ const Navbar = () => {
             )}
 
             {isMinimized ? (
-              <div className={styles.menu_search_minimized_container}>
+              <div
+                className={styles.menu_search_minimized_container}
+                onMouseDown={(e) => {
+                  e.stopPropagation();
+                }}
+              >
                 <button
                   className={styles.minimized_icon_btn}
                   onClick={handleBarsClick}
@@ -195,7 +253,11 @@ const Navbar = () => {
               </>
             )}
           </div>
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 34c2e8baa39e19778f69edc7d53cba60960c54f8
           {isMinimized && showLinks && (
             <div
               className={styles.nav_links_container_toggle}

@@ -36,16 +36,16 @@ const Account = ({ params }) => {
     }
   };
 
-  useEffect(() => {
-    console.log(params);
-    fetchData();
-  }, []);
+
 
   const [descriptionValue, setDescriptionValue] = useState();
 
   useEffect(() => {
     setDescriptionValue(blogData.description);
   }, [blogData.description]);
+
+
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setBlogData({ ...blogData, [name]: value });
@@ -62,8 +62,8 @@ const Account = ({ params }) => {
     }
   };
 
-  const save = () => {
-    saveEditedBlog(editId, blogData.title, descriptionValue);
+  const save = async () => {
+    await saveEditedBlog(editId, blogData.title, descriptionValue);
     router.push(`/blog/${editId}`);
   };
   return (

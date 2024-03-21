@@ -1,40 +1,50 @@
 import styles from "./AboutUs.module.css";
-import Header from "@/components/header/page";
-import RemoveParallax from "./RemoveParallax";
+
 import aboutContent from "./aboutContent.json";
-import history from "/public/history.jpg"; 
+import history from "/public/history.jpg";
 import enviroment from "/public/enviroment.jpg";
+import AddParallax from "./AddParallax";
+import HeroSegment from "@/components/HeroSegment/page";
+
+import img from '/public/about-us-cover.jpg'
 
 export const metadata = {
   title: "About us",
-  description: "Our history"
+  description: "Our history",
 };
 
 const awards = [
-   "Top Bankable Manufacturer Rated by Bloomberg New Energy Finance (BNEF) in 2022",
-    "Tier 1 Solar Company by Bloomberg New Energy 2017-2022",
-    "Leading company in PHOTON PV TRIATHALON 2017",
-    "No. 1 Module Supplier for Quality and Performance/Price Ratio in IHS Module Customer Insight Survey in 2016",
-    "The Best PV Module Manufacturer Award in Brazil by Smart Energy 2016",
-    "No. 1 Silicon module solar plant developer by Greentech Media Research in 2017",
-    "Best Structured Project Bond Award by Environmental Finance 2017",
-    "TWO DEAL OF THE YEAR AWARDS FROM POWER FINANCE & RISK in 2018",
-    "Intersolar North America 2012 Solar Project Award Finalist"
-]
+  "Top Bankable Manufacturer Rated by Bloomberg New Energy Finance (BNEF) in 2022",
+  "Tier 1 Solar Company by Bloomberg New Energy 2017-2022",
+  "Leading company in PHOTON PV TRIATHALON 2017",
+  "No. 1 Module Supplier for Quality and Performance/Price Ratio in IHS Module Customer Insight Survey in 2016",
+  "The Best PV Module Manufacturer Award in Brazil by Smart Energy 2016",
+  "No. 1 Silicon module solar plant developer by Greentech Media Research in 2017",
+  "Best Structured Project Bond Award by Environmental Finance 2017",
+  "TWO DEAL OF THE YEAR AWARDS FROM POWER FINANCE & RISK in 2018",
+  "Intersolar North America 2012 Solar Project Award Finalist",
+];
+
+const awardsList = awards.map((award, index) => <li key={index}>{award}</li>);
 
 const AboutUs = () => {
-
   return (
-
     <>
       <div className={styles.container}>
-        <Header src={"./about-us-cover.jpg"} title={"About us"} />
+        <div className="banner_image">
+          <HeroSegment src={img}>
+            <div className="banner_text">
+              <h1>About Us</h1>
+            </div>
+          </HeroSegment>
+        </div>
       </div>
       <div className="layout">
         <div className="middle">
           <section id="about_sec">
             <div className={styles.o_nama_main}>
-              <RemoveParallax  image={history}></RemoveParallax>
+              <AddParallax image={history} />
+
               <div className={styles.column}>
                 <div className={styles.centeredText}>
                   <h1>OUR HISTORY</h1>
@@ -42,7 +52,7 @@ const AboutUs = () => {
                 </div>
               </div>
             </div>
-           <div className={styles.o_nama_main}>
+            <div className={styles.o_nama_main}>
               <div className={styles.column}>
                 <div className={styles.centeredText}>
                   <h1>Environmental, Social and Governance (ESG)</h1>
@@ -51,36 +61,24 @@ const AboutUs = () => {
                   <p>{aboutContent.sustainability}</p>
                 </div>
               </div>
-              <RemoveParallax image={enviroment}></RemoveParallax>
+              <AddParallax image={enviroment} />
             </div>
           </section>
         </div>
-          <div className="thirdRow-all-columns">
+        <div className="thirdRow-all-columns">
           <div className={styles.fullImageContainer}>
             <div className={styles.overlay}></div>
             <div className="layout">
               <div className="middle">
                 <div className={styles.textOverlay}>
                   <h1>AWARDS</h1>
-                  <ul>
-                        
-                  <li>{awards[0]}</li>
-                    <li>{awards[1]}</li>
-                    <li>{awards[2]}</li>
-                    <li>{awards[3]}</li>
-                    <li>{awards[4]}</li>
-                    <li>{awards[5]}</li>
-                    <li>{awards[6]}</li>
-                    <li>{awards[7]}</li>
-                    <li>{awards[8]}</li>
-                      </ul>
+                  <ul>{awardsList}</ul>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      
     </>
   );
 };
