@@ -1,4 +1,4 @@
-import Cookies from 'js-cookie'
+"use client";
 import React, { useState } from "react";
 
 import ba from '../local/ba'
@@ -9,15 +9,21 @@ const translations = {
   en,
 };
 
-export const withTranslation = (Component) => {
-  return function WrappedComponent(props) {
-    const [lang, setLang] = useState('en');
-    
-    const changeLang = (newLang) => setLang(newLang);
-    
-    const t = (key) => translations[lang][key] || key;
-
-    return <Component {...props} translate={t} currentLanguage={lang} 
-    switchLanguage={changeLang} />;
+export default function WithTranslation(WrappedComponent, page) {
+  return function (props) {
+    const [language, setLanguage] = useState("en");
+    const changeLanguage = (lang) => {
+      setLanguage(lang);
+    };
+console.log(language)
+    const translate = (key) =>  translations[language][key] || key
+    return (
+      <WrappedComponent
+        {...props}
+        t={translate}
+        language={language}
+        changeLanguage={changeLanguage}
+      />
+    );
   };
-};
+}
