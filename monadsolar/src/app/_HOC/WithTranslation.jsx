@@ -1,4 +1,4 @@
-"use client";
+import Cookies from 'js-cookie'
 import React, { useState } from "react";
 
 import ba from '../local/ba'
@@ -17,6 +17,7 @@ export const withTranslation = (Component) => {
     
     const t = (key) => translations[lang][key] || key;
 
-    return <Component {...props} translate={t} currentLanguage={lang} switchLanguage={changeLang} />;
+    return <Component {...props} translate={t} currentLanguage={lang} 
+    switchLanguage={changeLang} />;
   };
 };
